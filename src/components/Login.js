@@ -1,20 +1,47 @@
-import React from "react";
-import { Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { logIn } = useUserAuth();
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await logIn(email, password);
+      navigate("/home");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <>
       <div className="modal-content rounded-4 shadow">
         <div className="p-4 box">
           <h2 className="mb-3">Nespresso SVR</h2>
-          <Form>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="email" placeholder="Email address" />
+              <Form.Control
+                type="email"
+                placeholder="Email cím"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Jelszó"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Group>
 
             <div className="d-grid gap-2">
@@ -23,9 +50,13 @@ const Login = () => {
               </Button>
             </div>
           </Form>
-          <hr />
+          <div className="w-100 text-center mt-4">
+            <Link to="/forgot-password">Jelszó visszaállítása</Link>
+          </div>
         </div>
-        <div className="p-4 box mt-3 text-center">Don't have an account?</div>
+      </div>
+      <div className="w-100 text-center mt-2">
+        Nincs felhasználói fiókod? <Link to="/signup">Regisztráció</Link>
       </div>
     </>
   );
