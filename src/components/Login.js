@@ -3,6 +3,7 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
+import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533.png"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,8 @@ const Login = () => {
     <>
       <div className="modal-content rounded-4 shadow">
         <div className="p-4 box">
-          <h2 className="mb-3">Nespresso SVR</h2>
+          <img className="mb-3" src={Logo} height={80} width={400} />
+          {/* <h2 className="mb-3">Nespresso SVR</h2> */}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
