@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { Navigate } from "react-router-dom";
-import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533.png"
+import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533-copy.png"
 
 export default function Home() {
   const [error, setError] = useState("");
@@ -28,14 +28,14 @@ export default function Home() {
       <Navbar.Brand href="/home">
             <img
               src={Logo}
-              width="30"
+              width="160"
               height="30"
               className="d-inline-block align-top"
               alt="Nespresso logo"
             />
           </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
+          <Navbar.Text style={{paddingRight: "8px"}}>
             Bejelentkezve mint: <a>{user && user.email}</a>
           </Navbar.Text>
           <Button variant="danger" onClick={handleLogOut}>
