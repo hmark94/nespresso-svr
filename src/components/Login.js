@@ -1,49 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533.png"
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+export default function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
   const { logIn } = useUserAuth();
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
     try {
-      await logIn(email, password);
-      navigate("/home");
-    } catch (error) {
-      setError(error.message);
+      setError('')
+      setLoading(true)
+      await logIn(emailRef.current.value, passwordRef.current.value)
+      navigate("/home")
+    } catch {
+      setError('A belépés nem sikerült!')
     }
-  };
+    setLoading(false)
+  }
 
   return (
     <>
       <div className="modal-content rounded-4 shadow">
         <div className="p-4 box">
-          <img className="mb-3" src={Logo} height={80} width={400} />
-          {/* <h2 className="mb-3">Nespresso SVR</h2> */}
+          <img className="mb-3" src={Logo} height={80} width={430} />
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="form-floating mb-3" controlId="formBasicEmail">
               <Form.Control
+              className="form-control-lg"
                 type="email"
                 placeholder="Email cím"
-                onChange={(e) => setEmail(e.target.value)}
+                pattern=".+@nespresso\.com"
+                ref={emailRef}
+                required
               />
+              <label htmlFor="floatingInput">Email cím</label>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="form-floating mb-3" controlId="formBasicPassword">
               <Form.Control
                 type="password"
                 placeholder="Jelszó"
-                onChange={(e) => setPassword(e.target.value)}
+                ref={passwordRef}
+                required
               />
+              <label htmlFor="floatingInput">Jelszó</label>
             </Form.Group>
 
             <div className="d-grid gap-2">
@@ -64,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+

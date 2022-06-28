@@ -11,8 +11,6 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 function App() {
   return (
     <Container>
-      <Row>
-        <Col>
           <UserAuthContextProvider>
             <Routes>
               <Route
@@ -24,12 +22,12 @@ function App() {
                 }
               />
               <Route path="/" element={<Login />} />
+
               <Route path="/signup" element={<SignUp />} />
+
               <Route path="/forgot-password" element={<ForgotPassword />} />
             </Routes>
           </UserAuthContextProvider>
-        </Col>
-      </Row>
     </Container>
   );
 }

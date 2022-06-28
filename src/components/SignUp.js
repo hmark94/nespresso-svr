@@ -1,51 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
   const { signUp } = useUserAuth();
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-      await signUp(email, password);
-      navigate("/");
-    } catch (error) {
-      setError(error.message);
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('A jelszavak nem egyeznek!')
     }
-  };
+
+    try {
+      setError('')
+      setLoading(true)
+      await signUp(emailRef.current.value, passwordRef.current.value)
+      navigate("/")
+    } catch {
+      setError('A regisztráció sikertelen volt!')
+    }
+    setLoading(false)
+  }
 
   return (
     <>
       <div className="modal-content rounded-4 shadow">
-        <div className="p-4 box">
-          <h2 className="mb-3">Fiók létrehozása</h2>
+        <div className="p-4 box" style={{width: "400px"}}>
+          <h2 className="mb-5 text-center">Fiók létrehozása</h2>
           {error && <Alert variant="danger">{error}</Alert> }
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form onSubmit={handleSubmit} >
+            <Form.Group className="form-floating mb-3" controlId="formBasicEmail">
               <Form.Control
+              className="form-control-lg"
                 type="email"
                 placeholder="Email cím"
-                onChange={(e) => setEmail(e.target.value)}
+                pattern=".+@nespresso\.com"
+                ref={emailRef}
+                required
               />
+              <label htmlFor="floatingInput">Email cím</label>
+              <div id="emailHelp" className="form-text text-center">Használd a '@nespresso.com' email címedet.</div>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="form-floating mb-3" controlId="formBasicPassword">
               <Form.Control
                 type="password"
                 placeholder="Jelszó"
-                onChange={(e) => setPassword(e.target.value)}
+                ref={passwordRef}
+                required
               />
+              <label htmlFor="floatingInput">Jelszó</label>
+            </Form.Group>
+
+            <Form.Group className="form-floating mb-3" controlId="formBasicPasswordConfirm">
+              <Form.Control
+                type="password"
+                placeholder="Jelszó megerősítése"
+                ref={passwordConfirmRef}
+                required
+              />
+              <label htmlFor="floatingInput">Jelszó megerősítése</label>
             </Form.Group>
 
             <div className="d-grid gap-2">
-              <Button variant="primary" type="Submit">
+              <Button disabled={loading} variant="primary" type="submit">
                 Regisztráció
               </Button>
             </div>
