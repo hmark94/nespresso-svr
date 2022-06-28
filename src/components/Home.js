@@ -8,7 +8,7 @@ import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533-copy.png";
 import CheckLogo from "../Icons/Nespresso-Icons-05.png";
 import ResultsLogo from "../Icons/Nespresso-Icons-10.png";
 import MembersLogo from "../Icons/Nespresso-Icons-11.png";
-import '../css/home.css'
+import "../css/home.css";
 
 export default function Home() {
   const [error, setError] = useState("");
@@ -49,34 +49,34 @@ export default function Home() {
         </Container>
       </Navbar>
 
-      <Container>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div className="col">
-            <a href="/new-form">
-              <div className="card shadow-sm">
-                <img src={CheckLogo} />
-                <p className="card-text">Új mérés</p>
-              </div>
-            </a>
+        <Container>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div className="col">
+              <a href="/new-form">
+                <div className="card shadow-sm">
+                  <img src={CheckLogo} width="100%" />
+                  <p className="card-text">Új mérés</p>
+                </div>
+              </a>
+            </div>
+            <div className="col">
+              <a href="/results">
+                <div className="card shadow-sm">
+                  <img src={ResultsLogo} width="100%" />
+                  <p className="card-text">Eredmények</p>
+                </div>
+              </a>
+            </div>
+            <div className="col">
+              <a href="/members">
+                <div className="card shadow-sm">
+                  <img src={MembersLogo} width="100%" />
+                  <p className="card-text">Coffee Specialistek</p>
+                </div>
+              </a>
+            </div>
           </div>
-          <div className="col">
-            <a href="/results">
-              <div className="card shadow-sm">
-                <img src={ResultsLogo} />
-                <p className="card-text">Eredmények</p>
-              </div>
-            </a>
-          </div>
-          <div className="col">
-            <a href="/members">
-              <div className="card shadow-sm">
-                <img src={MembersLogo} />
-                <p className="card-text">Coffee Specialistek</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </Container>
+        </Container>
     </>
   );
 }
