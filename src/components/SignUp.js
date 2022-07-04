@@ -33,7 +33,7 @@ export default function SignUp() {
 
   return (
     <>
-      <div className="modal-content rounded-4 shadow">
+      <div className="modal-content rounded-4 shadow" style={{marginTop: "30%"}}>
         <div className="p-4 box" style={{width: "400px"}}>
           <h2 className="mb-5 text-center">Fiók létrehozása</h2>
           {error && <Alert variant="danger">{error}</Alert> }

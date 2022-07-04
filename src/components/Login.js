@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="modal-content rounded-4 shadow">
+      <div className="modal-content rounded-4 shadow" style={{marginTop: "30%"}}>
         <div className="p-4 box">
           <img className="mb-3" src={Logo} height={80} width={430} />
           {error && <Alert variant="danger">{error}</Alert>}

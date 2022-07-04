@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <div className="modal-content rounded-4 shadow">
+      <div className="modal-content rounded-4 shadow" style={{marginTop: "30%"}}>
         <div className="p-4 box">
           <h2 className="mb-3">Jelszó visszaállítása</h2>
           {error && <Alert variant="danger">{error}</Alert>}
