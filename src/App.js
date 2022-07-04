@@ -10,6 +10,8 @@ import NewForm from "./components/NewForm";
 import Results from "./components/Results";
 import Members from "./components/Members"
 import { UserAuthContextProvider } from "./context/UserAuthContext";
+import "bootstrap/dist/css/bootstrap.css";
+import NavbarComponent from "./components/navbar/NavbarComponent";
 
 function App() {
   return (
