@@ -12,7 +12,7 @@ export default function NewForm() {
         <div className="form-header">
           <div className="back-button">
             <Button variant="warning">
-              
+              Vissza
             </Button>
           </div>
           <div className="form-title">

@@ -70,7 +70,6 @@ body {
 
 /*------------form_body-------------*/
 .form-container {
-  display: flex;
   margin-top: 56px;
 }
 
