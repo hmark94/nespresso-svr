@@ -1,0 +1,36 @@
+.conatiner {
+  width: 100vh;
+}
+.form-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 800px;
+  justify-content: space-between;
+}
+.form-title {
+  margin-top: 60px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+.back-button {
+  margin-top: 60px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.members-add {
+    display: flex;
+    flex-direction: column;
+}
+
+.members-email li {
+    list-style: none;
+}
