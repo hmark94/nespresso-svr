@@ -43,7 +43,7 @@ export default function NewForm() {
   return (
     <>
       <NavbarComponent />
-      <section className="form-header">
+      <section className="form-header mb-3 mt-3">
         <div className="back-button">
           <Button variant="warning" onClick={handleClick}>
             Vissza
@@ -68,6 +68,8 @@ export default function NewForm() {
             placeholder="Add meg a Coffee Specialist e-mail címét"
             onChange={(e) => setValue(e.target.value)}
             value={value}
+            pattern=".+@nespresso\.com"
+            required
           />
           <datalist id="datalistOptions">
             {emails.map((email, i) => (
@@ -75,7 +77,7 @@ export default function NewForm() {
             ))}
           </datalist>
 
-          <Form.Select aria-label="Default select example" className="mb-3">
+          <Form.Select aria-label="Default select example" className="mb-3" required>
             <option value="0" selected="selected" disabled>
               Válaszd ki az üzletet!
             </option>
@@ -482,7 +484,9 @@ export default function NewForm() {
           </Form.Label>
           <Form.Control as="textarea" rows={3} />
 
-          <Form.Label className="mt-3">Kitöltő: {user && user.email}</Form.Label>
+          <Form.Label className="mt-3">
+            Kitöltő: {user && user.email}
+          </Form.Label>
 
           <div className="mt-3 mb-3 d-grid">
             <Button
@@ -496,6 +500,9 @@ export default function NewForm() {
             </Button>
           </div>
         </Form>
+        <div className="form-footer">
+          *küldés előtt, győződj meg róla, hogy mindent helyesen töltöttél ki
+        </div>
       </div>
     </>
   );
