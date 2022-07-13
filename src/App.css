@@ -82,3 +82,11 @@ body {
   font-style: italic;
 }
 /*------------form_body-------------*/
+
+/*------------members-------------*/
+.members-email {
+  height: 360px;
+  overflow-y: auto;
+}
+
+/*------------members-------------*/

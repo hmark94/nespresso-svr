@@ -100,16 +100,35 @@ export default function Members() {
             <input type="text" placeholder="Coffee Specialist..." />
             <button type="submit">Keresés</button>
           </div>
-          <div className="members-email">
-            {emails.map((email, i) => (
-              <ul>
-                <li key={i}>
-                  <h4>{email.email}</h4>
-                  <button onClick={() => handleUpdate(email)}>Módosít</button>
-                  <button onClick={() => handleDelete(email)}>Töröl</button>
-                </li>
-              </ul>
-            ))}
+          <div className="members-email" style={{ "overflow-y": "auto"}}>
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th>E-mail</th>
+                </tr>
+              </thead>
+              <tbody>
+                {emails.map((email, i) => (
+                  <tr key={i}>
+                    <td>{email.email}</td>
+                    <td>
+                      <Button size="sm" onClick={() => handleUpdate(email)}>
+                        Módosít
+                      </Button>
+                    </td>
+                    <td>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleDelete(email)}
+                      >
+                        Töröl
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
         <div className="members-add">
