@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavbarComponent from "./navbar/NavbarComponent";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "../css/members.css";
 import { db } from "../firebase";
@@ -97,10 +97,12 @@ export default function Members() {
       <section className="form-body">
         <div className="members-box">
           <div className="searchbar">
-            <input type="text" placeholder="Coffee Specialist..." />
-            <button type="submit">Keresés</button>
+            <Form.Control type="text" placeholder="Coffee Specialist..." />
+            <Button type="submit" size="sm" variant="secondary">
+              Keresés
+            </Button>
           </div>
-          <div className="members-email" style={{ "overflow-y": "auto"}}>
+          <div className="members-email">
             <table className="table table-hover">
               <thead>
                 <tr>
@@ -132,24 +134,25 @@ export default function Members() {
           </div>
         </div>
         <div className="members-add">
-          <input
+          <Form.Control
             type="text"
             value={member}
             onChange={handleMemberChange}
             placeholder="Coffee Specialist neve"
-          ></input>
-          <input
+          ></Form.Control>
+          <Form.Control
             type="text"
             value={email}
             onChange={handleEmailChange}
             placeholder="Coffee Specialist email címe"
-          ></input>
+          ></Form.Control>
           {isEdit ? (
             <>
-              <button type="submit" onClick={handleSubmitChange}>
+              <Button type="submit" onClick={handleSubmitChange}>
                 Módosít
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="danger"
                 type="submit"
                 onClick={() => {
                   setIsEdit(false);
@@ -158,12 +161,12 @@ export default function Members() {
                 }}
               >
                 Mégse
-              </button>
+              </Button>
             </>
           ) : (
-            <button type="submit" onClick={writeToDatabase}>
+            <Button variant="success" type="submit" onClick={writeToDatabase}>
               Hozzáad
-            </button>
+            </Button>
           )}
         </div>
       </section>
