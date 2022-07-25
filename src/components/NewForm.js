@@ -5,10 +5,13 @@ import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { onValue, ref } from "firebase/database";
 import { db, fdb } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 import { useUserAuth } from "../context/UserAuthContext";
 
 export default function NewForm() {
   const [emails, setEmails] = useState([]);
+  const [newEmail, setNewEmail] = useState("");
+  const [newBtq, setNewBtq] = useState("");
   const [value, setValue] = useState("");
   const { user, logOut } = useUserAuth();
 
@@ -25,20 +28,21 @@ export default function NewForm() {
     });
   }, []);
 
-  const saveAnswers = (e) => {
+  const surveyResponseRef = collection(fdb, "surveyResponse");
+
+  const saveAnswers = async (e) => {
     e.preventDefault();
 
-    const elementsArray = [...e.target.elements];
-
-    const formData = elementsArray.reduce((accumulator, currentValue) => {
-      if (currentValue.id) {
-        accumulator[currentValue.id] = currentValue.value;
-      }
-
-      return accumulator;
-    }, {});
-
-    console.log({ formData });
+    await addDoc(surveyResponseRef, {
+      email: newEmail,
+      btq: newBtq,
+    })
+      .then(() => {
+        alert("SVR elküldve!");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   let navigate = useNavigate();
@@ -71,8 +75,8 @@ export default function NewForm() {
             list="datalistOptions"
             id="cs_select"
             placeholder="Add meg a Coffee Specialist e-mail címét"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
+            value={newEmail}
+            onChange={(e) => setNewEmail(e.target.value)}
             pattern=".+@nespresso\.com"
             required
           />
@@ -86,9 +90,11 @@ export default function NewForm() {
             aria-label="Default select example"
             className="mb-3"
             id="btq_select"
+            value={newBtq}
+            onChange={(e) => setNewBtq(e.target.value)}
             required
           >
-            <option selected="selected" disabled>
+            <option value={"default"} disabled>
               Válaszd ki az üzletet!
             </option>
             <option value="allee">Allee Boutique</option>
@@ -103,25 +109,10 @@ export default function NewForm() {
             <option value="westend">Westend Boutique</option>
           </Form.Select>
 
-          <h2 className="mb-3">I. Megjelenés</h2>
-          <Form.Check
-            label="A Coffee Specialist megjelenése kifogástalan"
-            type="checkbox"
-            id="default-checkbox-1"
-            style={{ fontSize: "1.3rem" }}
-          />
-          <Form.Check
-            label="A pult tiszta és rendezett"
-            type="checkbox"
-            id="default-checkbox-2"
-            style={{ fontSize: "1.3rem" }}
-            className="mb-3"
-          />
-
-          <h2 className="mb-3">II. Kapcsolatteremtés</h2>
+          <h2 className="mb-3">I. Kapcsolatteremtés</h2>
 
           <Form.Label htmlFor="inputQuestion1" className="mt-3">
-            Barátságos hangnemben, személyes mondattal, kérdéssel üdvözölte a
+            Barátságosan üdvözölte a
             vásárlót a Coffee Specialist? (Ice-breaking)
           </Form.Label>
           <Form.Select
@@ -134,8 +125,7 @@ export default function NewForm() {
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion2" className="mt-3">
-            Érdeklődött-e a Nespresso & You tagságról, megkereste-e a
-            klubtagságot?
+            Megkereste-e a Nespresso & You tagságot?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
@@ -147,18 +137,12 @@ export default function NewForm() {
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion3" className="mt-3">
-            Említette-e a Nespresso & You tagsági szintet/Lehetséges szintet?
+            Ha nem volt klubtagsága a vásárlónak, mivel érvelt a regisztráció mellett?
           </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
-            id="inputQuestion3"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-          </Form.Select>
+          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3"/>
+          {/* disabled ha az input question2 igen, enabled ha az input question2 nem */}
 
-          <h2 className="mb-3">III. Igényfelmérés</h2>
+          <h2 className="mb-3">II. Igényfelmérés</h2>
 
           <Form.Label htmlFor="checkboxQuestion" className="mt-3">
             Mely kávérendszereket említette a Coffee Specialist?
@@ -193,32 +177,6 @@ export default function NewForm() {
             />
           </div>
 
-          <Form.Label htmlFor="inputQuestion4" className="mt-3">
-            Érdeklődött a vásárló kávéfogyasztási szokásai iránt?
-          </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
-            id="inputQuestion4"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-            <option value="5">Részben</option>
-          </Form.Select>
-
-          <Form.Label htmlFor="inputQuestion5" className="mt-3">
-            Megtalálta a vásárló igényeinek megfelelő kávét?
-          </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
-            id="inputQuestion5"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-            <option value="5">Részben</option>
-          </Form.Select>
-
           <Form.Label htmlFor="inputQuestion6" className="mt-3">
             Használta a Nessoft nyújtotta információkat?
           </Form.Label>
@@ -229,8 +187,26 @@ export default function NewForm() {
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
-            <option value="5">Részben</option>
           </Form.Select>
+
+          <Form.Label htmlFor="inputQuestion3" className="mt-3">
+            Korábbi vásárlásból vagy átlagos fogyasztásból mit használt fel?
+          </Form.Label>
+          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3"/>
+          {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
+
+          <Form.Label htmlFor="inputQuestion4" className="mt-3">
+            Érdeklődött a vásárló kávéfogyasztási szokásai iránt?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            className="mb-3"
+            id="inputQuestion4"
+          >
+            <option value="0">Nem</option>
+            <option value="10">Igen</option>
+          </Form.Select>
+
 
           <Form.Label htmlFor="inputQuestion7" className="mt-3">
             Felajánlotta a kóstolás lehetőségét?
@@ -245,15 +221,14 @@ export default function NewForm() {
             <option value="5">Igen, a vásárlás végén</option>
           </Form.Select>
 
-          <h2 className="mb-3">IV. Vásárlói élmény fokozása</h2>
+          <h2 className="mb-3">III. Kapcsolat a márka és a vásárló között</h2>
 
           <Form.Label htmlFor="inputQuestion8" className="mt-3">
-            A Coffee Specialist mesélt anekdótát egy termékről vagy a márkáról?
+            A Coffee Specialist mesélt személyes történetet egy termékről vagy a márkáról?
           </Form.Label>
           <Form.Select aria-label="Default select example" id="inputQuestion8">
             <option value="0">Nem</option>
             <option value="15">Igen</option>
-            <option value="5">Részben</option>
           </Form.Select>
           <div>
             <Form.Text id="inputQuestion8">
@@ -262,20 +237,14 @@ export default function NewForm() {
             </Form.Text>
           </div>
 
-          <Form.Label htmlFor="inputQuestion9" className="mt-3">
-            Ajánlott a Coffee Specialist bármilyen további terméket?
+          <Form.Label htmlFor="inputQuestion3" className="mt-3">
+            Milyen történetet mesélt?
           </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
-            id="inputQuestion9"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-          </Form.Select>
+          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3"/>
+          {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
 
           <Form.Label htmlFor="inputQuestion10" className="mt-3">
-            Bemutatta a vásárló számára nyújtott előnyeit a terméknek?
+            A beszélgetést követően, releváns termékajánlás történt a vásárlónak?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
@@ -285,8 +254,6 @@ export default function NewForm() {
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
-
-          <h2 className="mb-3">V. Zárás és Márkahűség megerősítése</h2>
 
           <Form.Label htmlFor="inputQuestion11" className="mt-3">
             A vásárlás során a Coffee Specialist említette a Nespresso & You
@@ -374,6 +341,8 @@ export default function NewForm() {
             />
           </div>
 
+          <h2 className="mb-3">IV. Lezárás és elköszönés</h2>
+
           <Form.Label htmlFor="inputQuestion12" className="mt-3">
             A Coffee Specialist felhívta a figyelmet az újrahasznosítási
             szolgáltatásra és felajánlotta az ingyenes gyűjtőtasakot?
@@ -401,8 +370,34 @@ export default function NewForm() {
             <option value="10">Igen</option>
           </Form.Select>
 
+          <Form.Label htmlFor="inputQuestion13" className="mt-3">
+            Kért-e visszajelzést az aktuális vásárlási élményről?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            id="inputQuestion13"
+          >
+            <option value="0">Nem</option>
+            <option value="0">Igen</option>
+          </Form.Select>
+          <Form.Text id="inputQuestion13">
+            Például: "Bízom benne, hogy megtaláltuk a kedvencét...", "Bízom benne, hogy jól érzete magát nálunk...", "Sikerült minden kérdésére megtalálni a választ...", "Örülök, hogy nálunk vásárolt, remélem hamarosan viszontlátjuk...", "Örülök, hogy hozzánk fordult a problémával..." 
+          </Form.Text>
+
+          <Form.Label htmlFor="inputQuestion13" className="mt-3">
+            Felhívta a figyelmet a lehetséges vásárlói kérdőívre, egyéb visszajelzési lehetőségekre?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            className="mb-3"
+            id="inputQuestion13"
+          >
+            <option value="0">Nem</option>
+            <option value="0">Igen</option>
+          </Form.Select>
+
           <h2 className="mb-3">
-            VI. Coffee Specialist viselkedése, személyes vélemény
+            V. Coffee Specialist viselkedése, személyes vélemény
           </h2>
 
           <Form.Label htmlFor="inputQuestion14" className="mt-3">
