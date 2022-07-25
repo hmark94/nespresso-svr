@@ -139,7 +139,7 @@ export default function NewForm() {
           <Form.Label htmlFor="inputQuestion3" className="mt-3">
             Ha nem volt klubtagsága a vásárlónak, mivel érvelt a regisztráció mellett?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3"/>
+          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3" />
           {/* disabled ha az input question2 igen, enabled ha az input question2 nem */}
 
           <h2 className="mb-3">II. Igényfelmérés</h2>
@@ -177,31 +177,31 @@ export default function NewForm() {
             />
           </div>
 
-          <Form.Label htmlFor="inputQuestion6" className="mt-3">
+          <Form.Label htmlFor="inputQuestion4" className="mt-3">
             Használta a Nessoft nyújtotta információkat?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion6"
+            id="inputQuestion4"
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion3" className="mt-3">
+          <Form.Label htmlFor="inputQuestion5" className="mt-3">
             Korábbi vásárlásból vagy átlagos fogyasztásból mit használt fel?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3"/>
+          <Form.Control as="textarea" id="inputQuestion5" rows={1} className="mb-3" />
           {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
 
-          <Form.Label htmlFor="inputQuestion4" className="mt-3">
+          <Form.Label htmlFor="inputQuestion6" className="mt-3">
             Érdeklődött a vásárló kávéfogyasztási szokásai iránt?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion4"
+            id="inputQuestion6"
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
@@ -237,10 +237,10 @@ export default function NewForm() {
             </Form.Text>
           </div>
 
-          <Form.Label htmlFor="inputQuestion3" className="mt-3">
+          <Form.Label htmlFor="inputQuestion9" className="mt-3">
             Milyen történetet mesélt?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3"/>
+          <Form.Control as="textarea" id="inputQuestion9" rows={1} className="mb-3"/>
           {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
 
           <Form.Label htmlFor="inputQuestion10" className="mt-3">
@@ -370,27 +370,27 @@ export default function NewForm() {
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion13" className="mt-3">
+          <Form.Label htmlFor="inputQuestion14" className="mt-3">
             Kért-e visszajelzést az aktuális vásárlási élményről?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
-            id="inputQuestion13"
+            id="inputQuestion14"
           >
             <option value="0">Nem</option>
             <option value="0">Igen</option>
           </Form.Select>
-          <Form.Text id="inputQuestion13">
+          <Form.Text id="inputQuestion14">
             Például: "Bízom benne, hogy megtaláltuk a kedvencét...", "Bízom benne, hogy jól érzete magát nálunk...", "Sikerült minden kérdésére megtalálni a választ...", "Örülök, hogy nálunk vásárolt, remélem hamarosan viszontlátjuk...", "Örülök, hogy hozzánk fordult a problémával..." 
           </Form.Text>
 
-          <Form.Label htmlFor="inputQuestion13" className="mt-3">
+          <Form.Label htmlFor="inputQuestion15" className="mt-3">
             Felhívta a figyelmet a lehetséges vásárlói kérdőívre, egyéb visszajelzési lehetőségekre?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion13"
+            id="inputQuestion15"
           >
             <option value="0">Nem</option>
             <option value="0">Igen</option>
@@ -400,34 +400,8 @@ export default function NewForm() {
             V. Coffee Specialist viselkedése, személyes vélemény
           </h2>
 
-          <Form.Label htmlFor="inputQuestion14" className="mt-3">
-            Az értékesítés során a Coffee Specialist aktív és érdeklődő volt?
-          </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
-            id="inputQuestion14"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-          </Form.Select>
-
-          <Form.Label htmlFor="inputQuestion15" className="mt-3">
-            Akítv hallgatás és empátia jellemezte a beszélgetést? (igények
-            újrafogalmazása, megerősítés, ösztönző kérdések, szemkontaktus)
-          </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
-            id="inputQuestion15"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-          </Form.Select>
-
           <Form.Label htmlFor="inputQuestion16" className="mt-3">
-            A beszélgetés légköre barátságos volt, a Coffee Specialist
-            mosolygott?
+            Az értékesítés során a Coffee Specialist aktív és érdeklődő volt?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
@@ -439,7 +413,8 @@ export default function NewForm() {
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion17" className="mt-3">
-            Megpróbált-e személyes kapcsolatot kialakítani?
+            Akítv hallgatás és empátia jellemezte a beszélgetést? (igények
+            újrafogalmazása, megerősítés, ösztönző kérdések, szemkontaktus)
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
@@ -451,9 +426,34 @@ export default function NewForm() {
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion18" className="mt-3">
+            A beszélgetés légköre barátságos volt, a Coffee Specialist
+            mosolygott?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            className="mb-3"
+            id="inputQuestion18"
+          >
+            <option value="0">Nem</option>
+            <option value="10">Igen</option>
+          </Form.Select>
+
+          <Form.Label htmlFor="inputQuestion19" className="mt-3">
+            Megpróbált-e személyes kapcsolatot kialakítani?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            className="mb-3"
+            id="inputQuestion19"
+          >
+            <option value="0">Nem</option>
+            <option value="10">Igen</option>
+          </Form.Select>
+
+          <Form.Label htmlFor="inputQuestion20" className="mt-3">
             Milyennek érezted a vásárlást? Egyéb visszajelzés?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion18" rows={3} />
+          <Form.Control as="textarea" id="inputQuestion20" rows={3} />
 
           <Form.Label className="mt-3">
             Kitöltő: {user && user.email}
