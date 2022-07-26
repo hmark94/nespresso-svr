@@ -12,7 +12,11 @@ export default function NewForm() {
   const [emails, setEmails] = useState([]);
   const [newEmail, setNewEmail] = useState("");
   const [newBtq, setNewBtq] = useState("");
+  const [newQuestion1, setNewQuestion1] = useState("");
+  const [newQuestion2, setNewQuestion2] = useState("");
+  const [newQuestion3, setNewQuestion3] = useState("");
   const [value, setValue] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
   const { user, logOut } = useUserAuth();
 
   //read
@@ -28,6 +32,7 @@ export default function NewForm() {
     });
   }, []);
 
+
   const surveyResponseRef = collection(fdb, "surveyResponse");
 
   const saveAnswers = async (e) => {
@@ -36,6 +41,9 @@ export default function NewForm() {
     await addDoc(surveyResponseRef, {
       email: newEmail,
       btq: newBtq,
+      question1: newQuestion1,
+      question2: newQuestion2,
+      question3: newQuestion3,
     })
       .then(() => {
         alert("SVR elküldve!");
@@ -112,13 +120,15 @@ export default function NewForm() {
           <h2 className="mb-3">I. Kapcsolatteremtés</h2>
 
           <Form.Label htmlFor="inputQuestion1" className="mt-3">
-            Barátságosan üdvözölte a
-            vásárlót a Coffee Specialist? (Ice-breaking)
+            Barátságosan üdvözölte a vásárlót a Coffee Specialist?
+            (Ice-breaking)
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
             id="inputQuestion1"
+            value={newQuestion1}
+            onChange={(e) => setNewQuestion1(e.target.value)}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
@@ -131,15 +141,31 @@ export default function NewForm() {
             aria-label="Default select example"
             className="mb-3"
             id="inputQuestion2"
+            value={newQuestion2}
+            onChange={(e) => {setNewQuestion2(e.target.value);
+            if(e.target.value == 10) {
+              setIsDisabled(true)
+            } else {
+              setIsDisabled(false)
+            }}}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion3" className="mt-3">
-            Ha nem volt klubtagsága a vásárlónak, mivel érvelt a regisztráció mellett?
+            Ha nem volt klubtagsága a vásárlónak, mivel érvelt a regisztráció
+            mellett?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion18" rows={1} className="mb-3" />
+          <Form.Control
+            as="textarea"
+            id="inputQuestion3"
+            rows={1}
+            className="mb-3"
+            disabled={isDisabled}
+            value={newQuestion3}
+            onChange={(e) => {setNewQuestion3(e.target.value)}}
+          />
           {/* disabled ha az input question2 igen, enabled ha az input question2 nem */}
 
           <h2 className="mb-3">II. Igényfelmérés</h2>
@@ -192,7 +218,12 @@ export default function NewForm() {
           <Form.Label htmlFor="inputQuestion5" className="mt-3">
             Korábbi vásárlásból vagy átlagos fogyasztásból mit használt fel?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion5" rows={1} className="mb-3" />
+          <Form.Control
+            as="textarea"
+            id="inputQuestion5"
+            rows={1}
+            className="mb-3"
+          />
           {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
 
           <Form.Label htmlFor="inputQuestion6" className="mt-3">
@@ -206,7 +237,6 @@ export default function NewForm() {
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
-
 
           <Form.Label htmlFor="inputQuestion7" className="mt-3">
             Felajánlotta a kóstolás lehetőségét?
@@ -224,7 +254,8 @@ export default function NewForm() {
           <h2 className="mb-3">III. Kapcsolat a márka és a vásárló között</h2>
 
           <Form.Label htmlFor="inputQuestion8" className="mt-3">
-            A Coffee Specialist mesélt személyes történetet egy termékről vagy a márkáról?
+            A Coffee Specialist mesélt személyes történetet egy termékről vagy a
+            márkáról?
           </Form.Label>
           <Form.Select aria-label="Default select example" id="inputQuestion8">
             <option value="0">Nem</option>
@@ -240,11 +271,17 @@ export default function NewForm() {
           <Form.Label htmlFor="inputQuestion9" className="mt-3">
             Milyen történetet mesélt?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion9" rows={1} className="mb-3"/>
+          <Form.Control
+            as="textarea"
+            id="inputQuestion9"
+            rows={1}
+            className="mb-3"
+          />
           {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
 
           <Form.Label htmlFor="inputQuestion10" className="mt-3">
-            A beszélgetést követően, releváns termékajánlás történt a vásárlónak?
+            A beszélgetést követően, releváns termékajánlás történt a
+            vásárlónak?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
@@ -373,19 +410,21 @@ export default function NewForm() {
           <Form.Label htmlFor="inputQuestion14" className="mt-3">
             Kért-e visszajelzést az aktuális vásárlási élményről?
           </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            id="inputQuestion14"
-          >
+          <Form.Select aria-label="Default select example" id="inputQuestion14">
             <option value="0">Nem</option>
             <option value="0">Igen</option>
           </Form.Select>
           <Form.Text id="inputQuestion14">
-            Például: "Bízom benne, hogy megtaláltuk a kedvencét...", "Bízom benne, hogy jól érzete magát nálunk...", "Sikerült minden kérdésére megtalálni a választ...", "Örülök, hogy nálunk vásárolt, remélem hamarosan viszontlátjuk...", "Örülök, hogy hozzánk fordult a problémával..." 
+            Például: "Bízom benne, hogy megtaláltuk a kedvencét...", "Bízom
+            benne, hogy jól érzete magát nálunk...", "Sikerült minden kérdésére
+            megtalálni a választ...", "Örülök, hogy nálunk vásárolt, remélem
+            hamarosan viszontlátjuk...", "Örülök, hogy hozzánk fordult a
+            problémával..."
           </Form.Text>
 
           <Form.Label htmlFor="inputQuestion15" className="mt-3">
-            Felhívta a figyelmet a lehetséges vásárlói kérdőívre, egyéb visszajelzési lehetőségekre?
+            Felhívta a figyelmet a lehetséges vásárlói kérdőívre, egyéb
+            visszajelzési lehetőségekre?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
