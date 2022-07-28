@@ -15,8 +15,30 @@ export default function NewForm() {
   const [newQuestion1, setNewQuestion1] = useState("");
   const [newQuestion2, setNewQuestion2] = useState("");
   const [newQuestion3, setNewQuestion3] = useState("");
+  const [newQuestion4, setNewQuestion4] = useState("");
+  const [newQuestion5, setNewQuestion5] = useState("");
+  const [newQuestion6, setNewQuestion6] = useState("");
+  const [newQuestion7, setNewQuestion7] = useState("");
+  const [newQuestion8, setNewQuestion8] = useState("");
+  const [newQuestion9, setNewQuestion9] = useState("");
+  const [newQuestion10, setNewQuestion10] = useState("");
+  const [newQuestion11, setNewQuestion11] = useState("");
+  const [newQuestion12, setNewQuestion12] = useState("");
+  const [newQuestion13, setNewQuestion13] = useState("");
+  const [newQuestion14, setNewQuestion14] = useState("");
+  const [newQuestion15, setNewQuestion15] = useState("");
+  const [newQuestion16, setNewQuestion16] = useState("");
+  const [newQuestion17, setNewQuestion17] = useState("");
+  const [newQuestion18, setNewQuestion18] = useState("");
+  const [newQuestion19, setNewQuestion19] = useState("");
+  const [newQuestion20, setNewQuestion20] = useState("");
+  const [newQuestion21, setNewQuestion21] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [newEvaluator, setNewEvaluator] = useState("");
   const [value, setValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled2, setIsDisabled2] = useState(true);
+  const [isDisabled3, setIsDisabled3] = useState(true);
   const { user, logOut } = useUserAuth();
 
   //read
@@ -32,7 +54,6 @@ export default function NewForm() {
     });
   }, []);
 
-
   const surveyResponseRef = collection(fdb, "surveyResponse");
 
   const saveAnswers = async (e) => {
@@ -41,17 +62,41 @@ export default function NewForm() {
     await addDoc(surveyResponseRef, {
       email: newEmail,
       btq: newBtq,
-      question1: newQuestion1,
-      question2: newQuestion2,
-      question3: newQuestion3,
+      question01: newQuestion1,
+      question02: newQuestion2,
+      question03: newQuestion3,
+      question04: newQuestion4,
+      question05: newQuestion5,
+      question06: newQuestion6,
+      question07: newQuestion7,
+      question08: newQuestion8,
+      question09: newQuestion9,
+      question10: newQuestion10,
+      question11: newQuestion11,
+      question12: newQuestion12,
+      question13: newQuestion13,
+      question14: newQuestion14,
+      question15: newQuestion15,
+      question16: newQuestion16,
+      question17: newQuestion17,
+      question18: newQuestion18,
+      question19: newQuestion19,
+      question20: newQuestion20,
+      question21: newQuestion21,
+      questionCheckbox: isChecked,
+      evaluator: user.email,
     })
       .then(() => {
-        alert("SVR elküldve!");
+        navigate("/success");
       })
       .catch((err) => {
         alert(err.message);
       });
   };
+
+  function checkboxHandle() {
+    setIsChecked(!isChecked);
+  }
 
   let navigate = useNavigate();
   function handleClick() {
@@ -142,12 +187,14 @@ export default function NewForm() {
             className="mb-3"
             id="inputQuestion2"
             value={newQuestion2}
-            onChange={(e) => {setNewQuestion2(e.target.value);
-            if(e.target.value == 10) {
-              setIsDisabled(true)
-            } else {
-              setIsDisabled(false)
-            }}}
+            onChange={(e) => {
+              setNewQuestion2(e.target.value);
+              if (e.target.value == 10) {
+                setIsDisabled(true);
+              } else {
+                setIsDisabled(false);
+              }
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
@@ -164,87 +211,96 @@ export default function NewForm() {
             className="mb-3"
             disabled={isDisabled}
             value={newQuestion3}
-            onChange={(e) => {setNewQuestion3(e.target.value)}}
+            onChange={(e) => {
+              setNewQuestion3(e.target.value);
+            }}
           />
           {/* disabled ha az input question2 igen, enabled ha az input question2 nem */}
 
           <h2 className="mb-3">II. Igényfelmérés</h2>
 
-          <Form.Label htmlFor="checkboxQuestion" className="mt-3">
-            Mely kávérendszereket említette a Coffee Specialist?
-          </Form.Label>
-          <div className="mb-3">
-            <Form.Check
-              inline
-              label="Vertuo"
-              type="checkbox"
-              value="5"
-              name="group1"
-              id="checkbox-1"
-              style={{ fontSize: "1.3rem" }}
-            />
-            <Form.Check
-              inline
-              label="Original"
-              type="checkbox"
-              value="5"
-              name="group1"
-              id="checkbox-2"
-              style={{ fontSize: "1.3rem" }}
-            />
-            <Form.Check
-              inline
-              label="Egyik sem"
-              type="checkbox"
-              value="0"
-              name="group1"
-              id="checkbox-3"
-              style={{ fontSize: "1.3rem" }}
-            />
-          </div>
-
           <Form.Label htmlFor="inputQuestion4" className="mt-3">
-            Használta a Nessoft nyújtotta információkat?
+            Mely kávérendszereket említette a Coffee Specialist?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
             id="inputQuestion4"
+            value={newQuestion4}
+            onChange={(e) => {
+              setNewQuestion4(e.target.value);
+            }}
+          >
+            <option value="0">Egyiket sem</option>
+            <option value="8">Vertuo</option>
+            <option value="5">Original</option>
+            <option value="10">Mindkét rendszert említette</option>
+          </Form.Select>
+
+          <Form.Label htmlFor="inputQuestion5" className="mt-3">
+            Használta a Nessoft nyújtotta információkat?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            className="mb-3"
+            id="inputQuestion5"
+            value={newQuestion5}
+            onChange={(e) => {
+              setNewQuestion5(e.target.value);
+              if (e.target.value == 10) {
+                setIsDisabled2(false);
+              } else {
+                setIsDisabled2(true);
+              }
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion5" className="mt-3">
+          <Form.Label htmlFor="inputQuestion6" className="mt-3">
             Korábbi vásárlásból vagy átlagos fogyasztásból mit használt fel?
           </Form.Label>
           <Form.Control
             as="textarea"
-            id="inputQuestion5"
+            id="inputQuestion6"
             rows={1}
             className="mb-3"
+            disabled={isDisabled2}
+            value={newQuestion6}
+            onChange={(e) => {
+              setNewQuestion6(e.target.value);
+            }}
           />
-          {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
+          {/* enabled ha az input question5 igen, disabled ha az input question6 nem */}
 
-          <Form.Label htmlFor="inputQuestion6" className="mt-3">
+          <Form.Label htmlFor="inputQuestion7" className="mt-3">
             Érdeklődött a vásárló kávéfogyasztási szokásai iránt?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion6"
+            id="inputQuestion7"
+            value={newQuestion7}
+            onChange={(e) => {
+              setNewQuestion7(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion7" className="mt-3">
+          <Form.Label htmlFor="inputQuestion8" className="mt-3">
             Felajánlotta a kóstolás lehetőségét?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion7"
+            id="inputQuestion8"
+            value={newQuestion8}
+            onChange={(e) => {
+              setNewQuestion8(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen, a vásárlás elején/közben</option>
@@ -253,53 +309,78 @@ export default function NewForm() {
 
           <h2 className="mb-3">III. Kapcsolat a márka és a vásárló között</h2>
 
-          <Form.Label htmlFor="inputQuestion8" className="mt-3">
+          <Form.Label htmlFor="inputQuestion9" className="mt-3">
             A Coffee Specialist mesélt személyes történetet egy termékről vagy a
             márkáról?
           </Form.Label>
-          <Form.Select aria-label="Default select example" id="inputQuestion8">
+          <Form.Select
+            aria-label="Default select example"
+            id="inputQuestion8"
+            value={newQuestion9}
+            onChange={(e) => {
+              setNewQuestion9(e.target.value);
+              if (e.target.value == 15) {
+                setIsDisabled3(false);
+              } else {
+                setIsDisabled3(true);
+              }
+            }}
+          >
             <option value="0">Nem</option>
             <option value="15">Igen</option>
           </Form.Select>
           <div>
-            <Form.Text id="inputQuestion8">
+            <Form.Text id="inputQuestion9">
               A történetmesélés olyan anekdóták vagy történetek megosztására
               vonatkozik, melyek túlmennek a termék egyszerű leírásán.
             </Form.Text>
           </div>
 
-          <Form.Label htmlFor="inputQuestion9" className="mt-3">
+          <Form.Label htmlFor="inputQuestion10" className="mt-3">
             Milyen történetet mesélt?
           </Form.Label>
           <Form.Control
             as="textarea"
-            id="inputQuestion9"
+            id="inputQuestion10"
             rows={1}
             className="mb-3"
+            disabled={isDisabled3}
+            value={newQuestion10}
+            onChange={(e) => {
+              setNewQuestion10(e.target.value);
+            }}
           />
-          {/* enabled ha az input question6 igen, disabled ha az input question6 nem */}
+          {/* enabled ha az input question8 igen, disabled ha az input question8 nem */}
 
-          <Form.Label htmlFor="inputQuestion10" className="mt-3">
+          <Form.Label htmlFor="inputQuestion11" className="mt-3">
             A beszélgetést követően, releváns termékajánlás történt a
             vásárlónak?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion10"
+            id="inputQuestion11"
+            value={newQuestion11}
+            onChange={(e) => {
+              setNewQuestion11(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion11" className="mt-3">
+          <Form.Label htmlFor="inputQuestion12" className="mt-3">
             A vásárlás során a Coffee Specialist említette a Nespresso & You
             vagy Bónuszprogram előnyeit?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion11"
+            id="inputQuestion12"
+            value={newQuestion12}
+            onChange={(e) => {
+              setNewQuestion12(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
@@ -319,6 +400,8 @@ export default function NewForm() {
               name="group2"
               id="checkbox-gr2-1"
               style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked}
+              onChange={checkboxHandle}
             />
             <Form.Check
               label="Átvétel az üzletben"
@@ -380,20 +463,24 @@ export default function NewForm() {
 
           <h2 className="mb-3">IV. Lezárás és elköszönés</h2>
 
-          <Form.Label htmlFor="inputQuestion12" className="mt-3">
+          <Form.Label htmlFor="inputQuestion13" className="mt-3">
             A Coffee Specialist felhívta a figyelmet az újrahasznosítási
             szolgáltatásra és felajánlotta az ingyenes gyűjtőtasakot?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion12"
+            id="inputQuestion13"
+            value={newQuestion13}
+            onChange={(e) => {
+              setNewQuestion13(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion13" className="mt-3">
+          <Form.Label htmlFor="inputQuestion14" className="mt-3">
             Udvariasan, újabb látogatásra invitálta a vásárlót. Jó egészséget
             kívánt neki. (vagy kávékóstolásra invitálja-e a Coffee Specialist a
             vásárlót?)
@@ -401,35 +488,52 @@ export default function NewForm() {
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion13"
+            id="inputQuestion14"
+            value={newQuestion14}
+            onChange={(e) => {
+              setNewQuestion14(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
-          <Form.Label htmlFor="inputQuestion14" className="mt-3">
+          <Form.Label htmlFor="inputQuestion15" className="mt-3">
             Kért-e visszajelzést az aktuális vásárlási élményről?
           </Form.Label>
-          <Form.Select aria-label="Default select example" id="inputQuestion14">
+          <Form.Select
+            aria-label="Default select example"
+            id="inputQuestion15"
+            value={newQuestion15}
+            onChange={(e) => {
+              setNewQuestion15(e.target.value);
+            }}
+          >
             <option value="0">Nem</option>
             <option value="0">Igen</option>
           </Form.Select>
-          <Form.Text id="inputQuestion14">
-            Például: "Bízom benne, hogy megtaláltuk a kedvencét...", "Bízom
-            benne, hogy jól érzete magát nálunk...", "Sikerült minden kérdésére
-            megtalálni a választ...", "Örülök, hogy nálunk vásárolt, remélem
-            hamarosan viszontlátjuk...", "Örülök, hogy hozzánk fordult a
-            problémával..."
-          </Form.Text>
+          <div>
+            <Form.Text id="inputQuestion15">
+              Például: "Bízom benne, hogy megtaláltuk a kedvencét...", "Bízom
+              benne, hogy jól érzete magát nálunk...", "Sikerült minden
+              kérdésére megtalálni a választ...", "Örülök, hogy nálunk vásárolt,
+              remélem hamarosan viszontlátjuk...", "Örülök, hogy hozzánk fordult
+              a problémával..."
+            </Form.Text>
+          </div>
 
-          <Form.Label htmlFor="inputQuestion15" className="mt-3">
+          <Form.Label htmlFor="inputQuestion16" className="mt-3">
             Felhívta a figyelmet a lehetséges vásárlói kérdőívre, egyéb
             visszajelzési lehetőségekre?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion15"
+            id="inputQuestion16"
+            value={newQuestion16}
+            onChange={(e) => {
+              setNewQuestion16(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="0">Igen</option>
@@ -439,60 +543,84 @@ export default function NewForm() {
             V. Coffee Specialist viselkedése, személyes vélemény
           </h2>
 
-          <Form.Label htmlFor="inputQuestion16" className="mt-3">
+          <Form.Label htmlFor="inputQuestion17" className="mt-3">
             Az értékesítés során a Coffee Specialist aktív és érdeklődő volt?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
-            id="inputQuestion16"
-          >
-            <option value="0">Nem</option>
-            <option value="10">Igen</option>
-          </Form.Select>
-
-          <Form.Label htmlFor="inputQuestion17" className="mt-3">
-            Akítv hallgatás és empátia jellemezte a beszélgetést? (igények
-            újrafogalmazása, megerősítés, ösztönző kérdések, szemkontaktus)
-          </Form.Label>
-          <Form.Select
-            aria-label="Default select example"
-            className="mb-3"
             id="inputQuestion17"
+            value={newQuestion17}
+            onChange={(e) => {
+              setNewQuestion17(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion18" className="mt-3">
-            A beszélgetés légköre barátságos volt, a Coffee Specialist
-            mosolygott?
+            Akítv hallgatás és empátia jellemezte a beszélgetést? (igények
+            újrafogalmazása, megerősítés, ösztönző kérdések, szemkontaktus)
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
             id="inputQuestion18"
+            value={newQuestion18}
+            onChange={(e) => {
+              setNewQuestion18(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion19" className="mt-3">
-            Megpróbált-e személyes kapcsolatot kialakítani?
+            A beszélgetés légköre barátságos volt, a Coffee Specialist
+            mosolygott?
           </Form.Label>
           <Form.Select
             aria-label="Default select example"
             className="mb-3"
             id="inputQuestion19"
+            value={newQuestion19}
+            onChange={(e) => {
+              setNewQuestion19(e.target.value);
+            }}
           >
             <option value="0">Nem</option>
             <option value="10">Igen</option>
           </Form.Select>
 
           <Form.Label htmlFor="inputQuestion20" className="mt-3">
+            Megpróbált-e személyes kapcsolatot kialakítani?
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            className="mb-3"
+            id="inputQuestion20"
+            value={newQuestion20}
+            onChange={(e) => {
+              setNewQuestion20(e.target.value);
+            }}
+          >
+            <option value="0">Nem</option>
+            <option value="10">Igen</option>
+          </Form.Select>
+
+          <Form.Label htmlFor="inputQuestion21" className="mt-3">
             Milyennek érezted a vásárlást? Egyéb visszajelzés?
           </Form.Label>
-          <Form.Control as="textarea" id="inputQuestion20" rows={3} />
+          <Form.Control
+            as="textarea"
+            id="inputQuestion21"
+            rows={3}
+            value={newQuestion21}
+            onChange={(e) => {
+              setNewQuestion21(e.target.value);
+            }}
+          />
 
           <Form.Label className="mt-3">
             Kitöltő: {user && user.email}

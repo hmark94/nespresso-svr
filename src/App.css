@@ -90,3 +90,28 @@ body {
 }
 
 /*------------members-------------*/
+/*------------success-------------*/
+.success-buttons {
+  margin-top: 60px;
+}
+.success-buttons .back-button {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.success-body {
+  margin-top: 40px;
+}
+.check-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 105%;
+}
+.check-feedback {
+  color: green;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-align: center;
+}
+/*------------success-------------*/

@@ -8,7 +8,8 @@ import ForgotPassword from "./components/ForgotPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NewForm from "./components/NewForm";
 import Results from "./components/Results";
-import Members from "./components/Members"
+import Members from "./components/Members";
+import Success from "./components/Success";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import "bootstrap/dist/css/bootstrap.css";
 import NavbarComponent from "./components/navbar/NavbarComponent";
@@ -31,6 +32,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <NewForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/success"
+            element={
+              <ProtectedRoute>
+                <Success />
               </ProtectedRoute>
             }
           />
