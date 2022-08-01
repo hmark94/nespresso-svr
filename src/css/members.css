@@ -10,10 +10,18 @@
   margin-left: 70px;
   margin-right: 70px;
 }
+
 .back-button {
   margin-top: 60px;
   margin-left: 70px;
   margin-right: 70px;
+  padding: 10px;
+}
+.new-button {
+  padding: 10px;
+}
+.result-button {
+  padding: 10px;
 }
 
 .form-body {

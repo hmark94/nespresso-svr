@@ -12,6 +12,9 @@ export default function Success() {
   function handleClick2() {
     navigate("/new-form");
   }
+  function handleClick3() {
+    navigate("/results");
+  }
   return (
     <>
       <NavbarComponent />
@@ -26,6 +29,11 @@ export default function Success() {
             Új SVR
           </Button>
         </div>
+        <div className="result-button">
+          <Button variant="info" onClick={handleClick3} className="btn-lg">
+            Eredmény megtekintése
+          </Button>
+        </div>
       </section>
 
       <div className="success-body">
@@ -33,8 +41,8 @@ export default function Success() {
           <img
             src={CheckIcon}
             className="check-icon"
-            width="300px"
-            height="300px"
+            width="500px"
+            height="500px"
             style={{
               filter:
                 "invert(48%) sepia(62%) saturate(5428%) hue-rotate(75deg) brightness(97%) contrast(83%)",
