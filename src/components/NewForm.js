@@ -33,6 +33,8 @@ export default function NewForm() {
   const [newQuestion19, setNewQuestion19] = useState("");
   const [newQuestion20, setNewQuestion20] = useState("");
   const [newQuestion21, setNewQuestion21] = useState("");
+  const [hasValue, setHasValue] = useState("0");
+  const [newCheckbox, setNewCheckbox] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [newEvaluator, setNewEvaluator] = useState("");
   const [value, setValue] = useState("");
@@ -83,7 +85,7 @@ export default function NewForm() {
       question19: newQuestion19,
       question20: newQuestion20,
       question21: newQuestion21,
-      questionCheckbox: isChecked,
+      questionCheckbox: hasValue,
       evaluator: user.email,
     })
       .then(() => {
@@ -96,6 +98,8 @@ export default function NewForm() {
 
   function checkboxHandle() {
     setIsChecked(!isChecked);
+
+    setHasValue(!isChecked ? "5" : "0");
   }
 
   let navigate = useNavigate();
@@ -147,7 +151,7 @@ export default function NewForm() {
             onChange={(e) => setNewBtq(e.target.value)}
             required
           >
-            <option value={"default"} disabled>
+            <option value="" disabled selected>
               Válaszd ki az üzletet!
             </option>
             <option value="allee">Allee Boutique</option>
@@ -207,13 +211,14 @@ export default function NewForm() {
           <Form.Control
             as="textarea"
             id="inputQuestion3"
-            rows={1}
+            rows={2}
             className="mb-3"
             disabled={isDisabled}
             value={newQuestion3}
             onChange={(e) => {
               setNewQuestion3(e.target.value);
             }}
+            style={{ resize: "none" }}
           />
           {/* disabled ha az input question2 igen, enabled ha az input question2 nem */}
 
@@ -264,13 +269,14 @@ export default function NewForm() {
           <Form.Control
             as="textarea"
             id="inputQuestion6"
-            rows={1}
+            rows={2}
             className="mb-3"
             disabled={isDisabled2}
             value={newQuestion6}
             onChange={(e) => {
               setNewQuestion6(e.target.value);
             }}
+            style={{ resize: "none" }}
           />
           {/* enabled ha az input question5 igen, disabled ha az input question6 nem */}
 
@@ -342,13 +348,14 @@ export default function NewForm() {
           <Form.Control
             as="textarea"
             id="inputQuestion10"
-            rows={1}
+            rows={2}
             className="mb-3"
             disabled={isDisabled3}
             value={newQuestion10}
             onChange={(e) => {
               setNewQuestion10(e.target.value);
             }}
+            style={{ resize: "none" }}
           />
           {/* enabled ha az input question8 igen, disabled ha az input question8 nem */}
 
@@ -396,7 +403,7 @@ export default function NewForm() {
             <Form.Check
               label="Bónuszprogram"
               type="checkbox"
-              value="5"
+              value={hasValue}
               name="group2"
               id="checkbox-gr2-1"
               style={{ fontSize: "1.3rem" }}
@@ -620,6 +627,7 @@ export default function NewForm() {
             onChange={(e) => {
               setNewQuestion21(e.target.value);
             }}
+            style={{ resize: "none" }}
           />
 
           <Form.Label className="mt-3">
