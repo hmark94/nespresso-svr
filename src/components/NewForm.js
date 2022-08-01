@@ -34,10 +34,19 @@ export default function NewForm() {
   const [newQuestion20, setNewQuestion20] = useState("");
   const [newQuestion21, setNewQuestion21] = useState("");
   const [hasValue, setHasValue] = useState("0");
-  const [newCheckbox, setNewCheckbox] = useState("");
+  const [hasValue2, setHasValue2] = useState("0");
+  const [hasValue3, setHasValue3] = useState("0");
+  const [hasValue4, setHasValue4] = useState("0");
+  const [hasValue5, setHasValue5] = useState("0");
+  const [hasValue6, setHasValue6] = useState("0");
+  const [hasValue7, setHasValue7] = useState("0");
   const [isChecked, setIsChecked] = useState(false);
-  const [newEvaluator, setNewEvaluator] = useState("");
-  const [value, setValue] = useState("");
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
+  const [isChecked6, setIsChecked6] = useState(false);
+  const [isChecked7, setIsChecked7] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isDisabled2, setIsDisabled2] = useState(true);
   const [isDisabled3, setIsDisabled3] = useState(true);
@@ -76,6 +85,13 @@ export default function NewForm() {
       question10: newQuestion10,
       question11: newQuestion11,
       question12: newQuestion12,
+      questionCheckbox: hasValue,
+      questionCheckbox2: hasValue2,
+      questionCheckbox3: hasValue3,
+      questionCheckbox4: hasValue4,
+      questionCheckbox5: hasValue5,
+      questionCheckbox6: hasValue6,
+      questionCheckbox7: hasValue7,
       question13: newQuestion13,
       question14: newQuestion14,
       question15: newQuestion15,
@@ -85,7 +101,6 @@ export default function NewForm() {
       question19: newQuestion19,
       question20: newQuestion20,
       question21: newQuestion21,
-      questionCheckbox: hasValue,
       evaluator: user.email,
     })
       .then(() => {
@@ -100,6 +115,36 @@ export default function NewForm() {
     setIsChecked(!isChecked);
 
     setHasValue(!isChecked ? "5" : "0");
+  }
+  function checkboxHandle2() {
+    setIsChecked2(!isChecked2);
+
+    setHasValue2(!isChecked2 ? "2" : "0");
+  }
+  function checkboxHandle3() {
+    setIsChecked3(!isChecked3);
+
+    setHasValue3(!isChecked3 ? "2" : "0");
+  }
+  function checkboxHandle4() {
+    setIsChecked4(!isChecked4);
+
+    setHasValue4(!isChecked4 ? "2" : "0");
+  }
+  function checkboxHandle5() {
+    setIsChecked5(!isChecked5);
+
+    setHasValue5(!isChecked5 ? "2" : "0");
+  }
+  function checkboxHandle6() {
+    setIsChecked6(!isChecked6);
+
+    setHasValue6(!isChecked6 ? "2" : "0");
+  }
+  function checkboxHandle7() {
+    setIsChecked7(!isChecked7);
+
+    setHasValue7(!isChecked7 ? "2" : "0");
   }
 
   let navigate = useNavigate();
@@ -413,58 +458,62 @@ export default function NewForm() {
             <Form.Check
               label="Átvétel az üzletben"
               type="checkbox"
-              value="2"
+              value={hasValue2}
               name="group2"
               id="checkbox-gr2-2"
               style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked2}
+              onChange={checkboxHandle2}
             />
             <Form.Check
               label="Házhozszállítás"
               type="checkbox"
-              value="2"
+              value={hasValue3}
               name="group2"
               id="checkbox-gr2-3"
               style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked3}
+              onChange={checkboxHandle3}
             />
             <Form.Check
               label="Nespresso mobil app"
               type="checkbox"
-              value="2"
+              value={hasValue4}
               name="group2"
               id="checkbox-gr2-4"
               style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked4}
+              onChange={checkboxHandle4}
             />
             <Form.Check
               label="Nespresso weboldal"
               type="checkbox"
-              value="2"
+              value={hasValue5}
               name="group2"
               id="checkbox-gr2-5"
               style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked5}
+              onChange={checkboxHandle5}
             />
             <Form.Check
               label="Nespresso ügyfélszolgálat"
               type="checkbox"
-              value="2"
+              value={hasValue6}
               name="group2"
               id="checkbox-gr2-6"
               style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked6}
+              onChange={checkboxHandle6}
             />
             <Form.Check
               label="Nespresso and You"
               type="checkbox"
-              value="5"
+              value={hasValue7}
               name="group2"
               id="checkbox-gr2-7"
               style={{ fontSize: "1.3rem" }}
-            />
-            <Form.Check
-              label="Nem említett szolgáltatásokat"
-              type="checkbox"
-              value="0"
-              name="group2"
-              id="checkbox-gr2-8"
-              style={{ fontSize: "1.3rem" }}
+              checked={!!isChecked7}
+              onChange={checkboxHandle7}
             />
           </div>
 
