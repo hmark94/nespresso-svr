@@ -12,34 +12,34 @@ export default function NewForm() {
   const [emails, setEmails] = useState([]);
   const [newEmail, setNewEmail] = useState("");
   const [newBtq, setNewBtq] = useState("");
-  const [newQuestion1, setNewQuestion1] = useState("0");
-  const [newQuestion2, setNewQuestion2] = useState("0");
+  const [newQuestion1, setNewQuestion1] = useState(0);
+  const [newQuestion2, setNewQuestion2] = useState(0);
   const [newQuestion3, setNewQuestion3] = useState("");
-  const [newQuestion4, setNewQuestion4] = useState("0");
-  const [newQuestion5, setNewQuestion5] = useState("0");
+  const [newQuestion4, setNewQuestion4] = useState(0);
+  const [newQuestion5, setNewQuestion5] = useState(0);
   const [newQuestion6, setNewQuestion6] = useState("");
-  const [newQuestion7, setNewQuestion7] = useState("0");
-  const [newQuestion8, setNewQuestion8] = useState("0");
-  const [newQuestion9, setNewQuestion9] = useState("0");
+  const [newQuestion7, setNewQuestion7] = useState(0);
+  const [newQuestion8, setNewQuestion8] = useState(0);
+  const [newQuestion9, setNewQuestion9] = useState(0);
   const [newQuestion10, setNewQuestion10] = useState("");
-  const [newQuestion11, setNewQuestion11] = useState("0");
-  const [newQuestion12, setNewQuestion12] = useState("0");
-  const [newQuestion13, setNewQuestion13] = useState("0");
-  const [newQuestion14, setNewQuestion14] = useState("0");
-  const [newQuestion15, setNewQuestion15] = useState("0");
-  const [newQuestion16, setNewQuestion16] = useState("0");
-  const [newQuestion17, setNewQuestion17] = useState("0");
-  const [newQuestion18, setNewQuestion18] = useState("0");
-  const [newQuestion19, setNewQuestion19] = useState("0");
-  const [newQuestion20, setNewQuestion20] = useState("0");
+  const [newQuestion11, setNewQuestion11] = useState(0);
+  const [newQuestion12, setNewQuestion12] = useState(0);
+  const [newQuestion13, setNewQuestion13] = useState(0);
+  const [newQuestion14, setNewQuestion14] = useState(0);
+  const [newQuestion15, setNewQuestion15] = useState(0);
+  const [newQuestion16, setNewQuestion16] = useState(0);
+  const [newQuestion17, setNewQuestion17] = useState(0);
+  const [newQuestion18, setNewQuestion18] = useState(0);
+  const [newQuestion19, setNewQuestion19] = useState(0);
+  const [newQuestion20, setNewQuestion20] = useState(0);
   const [newQuestion21, setNewQuestion21] = useState("");
-  const [hasValue, setHasValue] = useState("0");
-  const [hasValue2, setHasValue2] = useState("0");
-  const [hasValue3, setHasValue3] = useState("0");
-  const [hasValue4, setHasValue4] = useState("0");
-  const [hasValue5, setHasValue5] = useState("0");
-  const [hasValue6, setHasValue6] = useState("0");
-  const [hasValue7, setHasValue7] = useState("0");
+  const [hasValue, setHasValue] = useState(0);
+  const [hasValue2, setHasValue2] = useState(0);
+  const [hasValue3, setHasValue3] = useState(0);
+  const [hasValue4, setHasValue4] = useState(0);
+  const [hasValue5, setHasValue5] = useState(0);
+  const [hasValue6, setHasValue6] = useState(0);
+  const [hasValue7, setHasValue7] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -51,6 +51,41 @@ export default function NewForm() {
   const [isDisabled2, setIsDisabled2] = useState(true);
   const [isDisabled3, setIsDisabled3] = useState(true);
   const { user, logOut } = useUserAuth();
+
+  const current = new Date();
+  const date = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
+
+  const sum =
+    +newQuestion1 +
+    +newQuestion2 +
+    +newQuestion4 +
+    +newQuestion5 +
+    +newQuestion7 +
+    +newQuestion8 +
+    +newQuestion9 +
+    +newQuestion11 +
+    +newQuestion12 +
+    +newQuestion13 +
+    +newQuestion14 +
+    +newQuestion15 +
+    +newQuestion16 +
+    +newQuestion17 +
+    +newQuestion18 +
+    +newQuestion19 +
+    +newQuestion20 +
+    +hasValue +
+    +hasValue2 +
+    +hasValue3 +
+    +hasValue4 +
+    +hasValue5 +
+    +hasValue6 +
+    +hasValue7;
+
+  useEffect(() => {
+    console.log(Math.trunc((sum / 174)*100));
+  }, [sum]);
 
   //read
   useEffect(() => {
@@ -102,6 +137,9 @@ export default function NewForm() {
       question20: newQuestion20,
       question21: newQuestion21,
       evaluator: user.email,
+      date: date,
+      total: sum,
+      percentage: `${Math.trunc((sum / 174)*100)}%`,
     })
       .then(() => {
         navigate("/success");
@@ -114,37 +152,37 @@ export default function NewForm() {
   function checkboxHandle() {
     setIsChecked(!isChecked);
 
-    setHasValue(!isChecked ? "5" : "0");
+    setHasValue(!isChecked ? 5 : 0);
   }
   function checkboxHandle2() {
     setIsChecked2(!isChecked2);
 
-    setHasValue2(!isChecked2 ? "2" : "0");
+    setHasValue2(!isChecked2 ? 2 : 0);
   }
   function checkboxHandle3() {
     setIsChecked3(!isChecked3);
 
-    setHasValue3(!isChecked3 ? "2" : "0");
+    setHasValue3(!isChecked3 ? 2 : 0);
   }
   function checkboxHandle4() {
     setIsChecked4(!isChecked4);
 
-    setHasValue4(!isChecked4 ? "2" : "0");
+    setHasValue4(!isChecked4 ? 2 : 0);
   }
   function checkboxHandle5() {
     setIsChecked5(!isChecked5);
 
-    setHasValue5(!isChecked5 ? "2" : "0");
+    setHasValue5(!isChecked5 ? 2 : 0);
   }
   function checkboxHandle6() {
     setIsChecked6(!isChecked6);
 
-    setHasValue6(!isChecked6 ? "2" : "0");
+    setHasValue6(!isChecked6 ? 2 : 0);
   }
   function checkboxHandle7() {
     setIsChecked7(!isChecked7);
 
-    setHasValue7(!isChecked7 ? "2" : "0");
+    setHasValue7(!isChecked7 ? 2 : 0);
   }
 
   let navigate = useNavigate();
@@ -566,7 +604,7 @@ export default function NewForm() {
             }}
           >
             <option value="0">Nem</option>
-            <option value="0">Igen</option>
+            <option value="1">Igen</option>
           </Form.Select>
           <div>
             <Form.Text id="inputQuestion15">
@@ -592,7 +630,7 @@ export default function NewForm() {
             }}
           >
             <option value="0">Nem</option>
-            <option value="0">Igen</option>
+            <option value="1">Igen</option>
           </Form.Select>
 
           <h2 className="mb-3">
