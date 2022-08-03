@@ -83,10 +83,6 @@ export default function NewForm() {
     +hasValue6 +
     +hasValue7;
 
-  useEffect(() => {
-    console.log(Math.trunc((sum / 174)*100));
-  }, [sum]);
-
   //read
   useEffect(() => {
     onValue(ref(db), (snapshot) => {

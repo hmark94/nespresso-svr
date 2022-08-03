@@ -115,3 +115,18 @@ body {
   text-align: center;
 }
 /*------------success-------------*/
+/*------------results-------------*/
+.results-title {
+  margin-top: 70px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.results-body a {
+  text-decoration: none;
+  color: black;
+}
+.results-body a:hover {
+  color: rgb(100, 100, 100)
+}
+/*------------results-------------*/
