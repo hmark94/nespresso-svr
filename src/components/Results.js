@@ -30,8 +30,12 @@ export default function Results() {
         <div className="results-title">
           <h2>Eredmények</h2>
         </div>
-        <div></div>
       </section>
+
+      <div className="results-top mb-4">
+        Havi átlag:<br />
+        Éves átlag:
+      </div>
 
       <div className="results-body">
         <div className="mb-4">
