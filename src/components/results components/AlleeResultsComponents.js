@@ -1,7 +1,13 @@
 import { registerables } from "chart.js";
+import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
+
+
 export default function AlleeResultsComponents() {
+
+
+
   return (
     <Line
       data={{

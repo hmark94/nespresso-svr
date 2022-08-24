@@ -10,6 +10,7 @@ import NewForm from "./components/NewForm";
 import Results from "./components/Results";
 import Members from "./components/Members";
 import Success from "./components/Success";
+import MemberResults from "./components/member results components/memberResults.component";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import "bootstrap/dist/css/bootstrap.css";
 import NavbarComponent from "./components/navbar/NavbarComponent";
@@ -58,6 +59,11 @@ function App() {
                 <Members />
               </ProtectedRoute>
             }
+          />
+
+          <Route
+            path="/results/memberResults"
+            element={<MemberResults />}
           />
 
           <Route path="/" element={<Login />} />
