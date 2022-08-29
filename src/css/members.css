@@ -42,6 +42,10 @@
   margin: 10px 0;
 }
 
+.members-add button {
+  margin: 5px 0;
+}
+
 .searchbar {
   display: flex;
   margin: 10px 0;
