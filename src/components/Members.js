@@ -14,6 +14,7 @@ export default function Members() {
   const [emails, setEmails] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [tempUuid, setTempUuid] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleMemberChange = (e) => {
     setMember(e.target.value);
@@ -97,10 +98,13 @@ export default function Members() {
       <section className="form-body">
         <div className="members-box">
           <div className="searchbar">
-            <Form.Control type="text" placeholder="Coffee Specialist..." />
-            <Button type="submit" size="sm" variant="secondary">
-              Keresés
-            </Button>
+            <Form.Control
+              type="text"
+              placeholder="Coffee Specialist..."
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
           </div>
           <div className="members-email">
             <table className="table table-hover">
@@ -110,25 +114,33 @@ export default function Members() {
                 </tr>
               </thead>
               <tbody>
-                {emails.map((email, i) => (
-                  <tr key={i}>
-                    <td>{email.email}</td>
-                    <td>
-                      <Button size="sm" onClick={() => handleUpdate(email)}>
-                        Módosít
-                      </Button>
-                    </td>
-                    <td>
-                      <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => handleDelete(email)}
-                      >
-                        Töröl
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
+                {emails
+                  .filter((val) => {
+                    if (searchTerm == "") {
+                      return val;
+                    } else if (val.email.toLowerCase().includes(searchTerm.toLowerCase())) {
+                      return val;
+                    }
+                  })
+                  .map((email, i) => (
+                    <tr key={i}>
+                      <td>{email.email}</td>
+                      <td>
+                        <Button size="sm" onClick={() => handleUpdate(email)}>
+                          Módosít
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => handleDelete(email)}
+                        >
+                          Töröl
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

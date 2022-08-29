@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ResultDataService from "../../context/ResultContext";
 
+import "./memberResults.styles.css";
+
 export default function MemberResults() {
   const [results, setResults] = useState([]);
   useEffect(() => {
@@ -14,6 +16,9 @@ export default function MemberResults() {
     setResults(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
-  return <>
-  <div>{JSON.stringify(results, undefined, 2)}</div></>;
+  return (
+    <>
+      <div>{JSON.stringify(results, undefined, 2)}</div>
+    </>
+  );
 }

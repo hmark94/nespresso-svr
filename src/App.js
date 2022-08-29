@@ -63,7 +63,12 @@ function App() {
 
           <Route
             path="/results/memberResults"
-            element={<MemberResults />}
+            element={
+              <>
+                <NavbarComponent />
+                <MemberResults />
+              </>
+            }
           />
 
           <Route path="/" element={<Login />} />

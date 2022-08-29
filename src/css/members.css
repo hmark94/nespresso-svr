@@ -27,15 +27,25 @@
 .form-body {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   border: 1px solid black;
 }
 
 .members-add {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    justify-content: center;
 }
 
+.members-add input {
+  margin: 10px 0;
+}
+
+.searchbar {
+  display: flex;
+  margin: 10px 0;
+}
 .members-email li {
     list-style: none;
 }
