@@ -10,6 +10,7 @@ import MammutResultsComponents from "./results components/MammutResultsComponent
 import MomResultsComponents from "./results components/MomResultsComponents";
 import WestendResultsComponents from "./results components/WestendResultsComponents";
 import Chart from 'chart.js/auto';
+import SVR_APP_DATA from '../context/DataBaseContext'
 
 export default function Results() {
   let navigate = useNavigate();
@@ -38,6 +39,20 @@ export default function Results() {
       </div>
 
       <div className="results-body">
+        {SVR_APP_DATA.map((e, i) => (<div className="mb-4">
+          <a href="#">
+            <Card>
+              <Card.Header
+                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
+              >
+                {console.log()}
+              </Card.Header>
+              <Card.Body>
+                Eredmény
+              </Card.Body>
+            </Card>
+          </a>
+        </div>))}
         <div className="mb-4">
           <a href="#">
             <Card>
