@@ -1,3 +1,4 @@
+import { doc } from "firebase/firestore";
 import React from "react";
 import { useState, useEffect } from "react";
 import ResultDataService from "../../context/ResultContext";
@@ -36,6 +37,8 @@ export default function MemberResults() {
           </a>
         </div>
       </div>
+      <div>{JSON.stringify(results, undefined, 2)}</div>
+      <div>Név:</div>
     </>
   );
 }

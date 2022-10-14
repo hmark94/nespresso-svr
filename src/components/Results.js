@@ -9,13 +9,29 @@ import ArkadGyorResultsComponents from "./results components/ArkadGyorResultsCom
 import MammutResultsComponents from "./results components/MammutResultsComponents";
 import MomResultsComponents from "./results components/MomResultsComponents";
 import WestendResultsComponents from "./results components/WestendResultsComponents";
-import Chart from 'chart.js/auto';
+import Chart from "chart.js/auto";
+import SVR_APP_DATA from "../context/DataBaseContext";
 
 export default function Results() {
   let navigate = useNavigate();
   function handleClick() {
     navigate("/home");
   }
+
+  const readData = SVR_APP_DATA[0].items.map((e, i) => (
+    <div className="mb-4" key={e.boutique_id}>
+      <a href="#">
+        <Card>
+          <Card.Header
+            style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
+          >
+            {e.boutique_name}
+          </Card.Header>
+          <Card.Body>Eredmény</Card.Body>
+        </Card>
+      </a>
+    </div>
+  ));
 
   return (
     <>
@@ -33,11 +49,14 @@ export default function Results() {
       </section>
 
       <div className="results-top mb-4">
-        Havi átlag:<br />
+        Havi átlag:
+        <br />
         Éves átlag:
       </div>
 
       <div className="results-body">
+        {readData}
+
         <div className="mb-4">
           <a href="#">
             <Card>
