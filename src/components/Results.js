@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import NavbarComponent from "./navbar/NavbarComponent";
 import { useNavigate } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
@@ -11,12 +11,40 @@ import MomResultsComponents from "./results components/MomResultsComponents";
 import WestendResultsComponents from "./results components/WestendResultsComponents";
 import Chart from "chart.js/auto";
 import SVR_APP_DATA from "../context/DataBaseContext";
+import { collection, getDoc, getDocs, doc } from "firebase/firestore";
+import { fdb } from "../firebase";
 
 export default function Results() {
   let navigate = useNavigate();
   function handleClick() {
     navigate("/home");
   }
+
+  //console.log({SVR_APP_DATA})
+  
+  // const [blogs,setBlogs]=useState([])
+  const getBtqQuery = async () => {
+    // const agrBtqDataPromises = SVR_APP_DATA[0].items.map((btq) => {
+    //   return getDocs(collection(fdb, btq.boutique_id))
+      
+    // });
+    // const agrBtqData = await Promise.all(agrBtqDataPromises)
+    // agrBtqData.forEach(item => {
+    //   console.log(item)
+    // })
+      const response=fdb.collection('alleeBtq');
+      const data=await response.get();
+      data.docs.forEach(item=>{
+      //  setBlogs([...blogs,item.data()])
+      console.log(item)
+      })
+    
+  }
+
+  useEffect(() => {
+    getBtqQuery()
+  }, []);
+ 
 
   const readData = SVR_APP_DATA[0].items.map((e, i) => (
     <div className="mb-4" key={e.boutique_id}>
@@ -32,6 +60,8 @@ export default function Results() {
       </a>
     </div>
   ));
+
+  //
 
   return (
     <>
