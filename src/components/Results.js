@@ -11,6 +11,7 @@ import MomResultsComponents from "./results components/MomResultsComponents";
 import WestendResultsComponents from "./results components/WestendResultsComponents";
 import Chart from "chart.js/auto";
 import SVR_APP_DATA from "../context/DataBaseContext";
+import MasterResultsComponents from "./results components/MasterResult";
 
 export default function Results() {
   let navigate = useNavigate();
@@ -66,7 +67,7 @@ export default function Results() {
                 Allee Boutique
               </Card.Header>
               <Card.Body>
-                <AlleeResultsComponents />
+                <MasterResultsComponents />
               </Card.Body>
             </Card>
           </a>

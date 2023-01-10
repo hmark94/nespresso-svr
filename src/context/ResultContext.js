@@ -11,29 +11,29 @@ import {
 } from "firebase/firestore";
 
 const resultCollectionRef = collection(fdb, "surveyResponse");
-class ResultDataService {
-  addResults = (newResult) => {
+const ResultDataService = {
+  addResults: (newResult) => {
     return addDoc(resultCollectionRef, newResult);
-  };
+  },
 
-  updateResult = (id, updatedResult) => {
+  updateResult: (id, updatedResult) => {
     const resultDoc = doc(fdb, "surveyResponse", id);
     return updateDoc(resultDoc, updatedResult);
-  };
+  },
 
-  deleteResult = (id) => {
+  deleteResult: (id) => {
     const resultDoc = doc(fdb, "surveyResponse", id);
     return deleteDoc(resultDoc);
-  };
+  },
 
-  getAllResults = () => {
+  getAllResults: () => {
     return getDocs(resultCollectionRef);
-  };
+  },
 
-  getResult = (id) => {
+  getResult: (id) => {
     const resultDoc = doc(fdb, "surveyResponse", id);
     return getDoc(resultDoc);
-  };
-}
+  },
+};
 
-export default new ResultDataService();
+export default ResultDataService;

@@ -88,8 +88,8 @@ export default function AlleeResultsComponents() {
       .catch((e) => console.error(e));
   }, []);
 
-  console.log(alleeResults);
-  console.log(januaryResult);
+  // console.log(alleeResults);
+  // console.log(januaryResult);
 
   return (
     <Line
