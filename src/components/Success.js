@@ -17,7 +17,6 @@ export default function Success() {
   }
   return (
     <>
-      <NavbarComponent />
       <section className="form-header success-buttons">
         <div className="back-button">
           <Button variant="warning" onClick={handleClick} className="btn-lg">

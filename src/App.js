@@ -19,6 +19,7 @@ function App() {
   return (
     <Container>
       <UserAuthContextProvider>
+        <NavbarComponent />
         <Routes>
           <Route
             path="/home"
@@ -65,7 +66,6 @@ function App() {
             path="/results/memberResults"
             element={
               <>
-                <NavbarComponent />
                 <MemberResults />
               </>
             }

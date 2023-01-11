@@ -3,40 +3,49 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
-import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533.png"
+import Logo from "../Logo/Nespresso-Logotype-Correct-2048x533.png";
+import Spinner from "./shared/Spinner";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { logIn } = useUserAuth();
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      setError('')
-      setLoading(true)
-      await logIn(emailRef.current.value, passwordRef.current.value)
-      navigate("/home")
+      setError("");
+      setIsLoading(true);
+      await logIn(emailRef.current.value, passwordRef.current.value);
+      navigate("/home");
     } catch {
-      setError('A belépés nem sikerült!')
+      setError("A belépés nem sikerült!");
     }
-    setLoading(false)
+    setIsLoading(false);
   }
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
-      <div className="modal-content rounded-4 shadow" style={{marginTop: "30%"}}>
+      <div
+        className="modal-content rounded-4 shadow"
+        style={{ marginTop: "30%" }}
+      >
         <div className="p-4 box">
           <img className="mb-3" src={Logo} height={80} width={430} />
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-          <Form.Group className="form-floating mb-3" controlId="formBasicEmail">
+            <Form.Group
+              className="form-floating mb-3"
+              controlId="formBasicEmail"
+            >
               <Form.Control
-              className="form-control-lg"
+                className="form-control-lg"
                 type="email"
                 placeholder="Email cím"
                 pattern=".+@nespresso\.com"
@@ -46,7 +55,10 @@ export default function Login() {
               <label htmlFor="floatingInput">Email cím</label>
             </Form.Group>
 
-            <Form.Group className="form-floating mb-3" controlId="formBasicPassword">
+            <Form.Group
+              className="form-floating mb-3"
+              controlId="formBasicPassword"
+            >
               <Form.Control
                 type="password"
                 placeholder="Jelszó"
@@ -72,6 +84,4 @@ export default function Login() {
       </div>
     </>
   );
-};
-
-
+}

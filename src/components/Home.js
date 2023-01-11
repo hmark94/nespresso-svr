@@ -14,7 +14,6 @@ import NavbarComponent from "./navbar/NavbarComponent";
 export default function Home() {
   return (
     <>
-      <NavbarComponent />
       <main className="main-body">
         <div className="row row-cols-1 row-cols-md-3 mb-3 text-center">
           <div className="col">

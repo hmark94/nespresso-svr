@@ -65,7 +65,6 @@ export default function Results() {
 
   return (
     <>
-      <NavbarComponent />
       <section className="form-header mb-3 mt-3">
         <div className="back-button">
           <Button variant="warning" onClick={handleClick}>

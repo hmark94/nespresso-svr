@@ -81,7 +81,6 @@ export default function Members() {
 
   return (
     <>
-      <NavbarComponent />
       <section className="form-header">
         <div className="back-button">
           <Button variant="warning" onClick={handleClick}>
