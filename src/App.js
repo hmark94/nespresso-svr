@@ -10,12 +10,15 @@ import NewForm from "./components/NewForm";
 import Results from "./components/Results";
 import Members from "./components/Members";
 import Success from "./components/Success";
+import NewFormDatabase from "./components/NewFormDatabase";
 import MemberResults from "./components/member results components/memberResults.component";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import "bootstrap/dist/css/bootstrap.css";
 import NavbarComponent from "./components/navbar/NavbarComponent";
 
+
 function App() {
+
   return (
     <Container>
       <UserAuthContextProvider>
@@ -34,6 +37,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <NewForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/new_form_database"
+            element={
+              <ProtectedRoute>
+                <NewFormDatabase />
               </ProtectedRoute>
             }
           />
