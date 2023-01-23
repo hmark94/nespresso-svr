@@ -79,8 +79,49 @@ export default function MasterResultsComponents() {
     getData();
   }, []);
 
+
+  // Try, catch wrapped, then deleted due to await, average value
   /*
-  
+  useEffect(() => {
+  const getData = async () => {
+    try {
+      const snapshot = await getDocs(colRef);
+      const results = snapshot.docs.reduce((acc, item) => {
+        const itemData = item.data();
+        const currentDate = itemData.date.split("/");
+        const getMonth = new Date(
+          +currentDate[2],
+          currentDate[1] - 1,
+          +currentDate[0]
+        ).getMonth();
+        itemData.percentage = itemData.percentage.replace(/\D/g, "");
+        if (acc[itemData.btq]) {
+          if (acc[itemData.btq][months[getMonth]]) {
+            acc[itemData.btq][months[getMonth]].push(+itemData.percentage);
+          } else {
+            acc[itemData.btq][months[getMonth]] = [];
+            acc[itemData.btq][months[getMonth]].push(+itemData.percentage);
+          }
+        } else {
+          acc[itemData.btq] = {};
+          acc[itemData.btq][months[getMonth]] = [];
+          acc[itemData.btq][months[getMonth]].push(+itemData.percentage);
+        }
+        acc[itemData.btq][months[getMonth]] = acc[itemData.btq][months[getMonth]].reduce((acc2, item2, index) => {
+          acc2 += item2;
+          return acc2 / (index + 1);
+        });
+        return acc;
+      }, {});
+      console.log({ results });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getData();
+}, []);
+
   */
 
   return (
