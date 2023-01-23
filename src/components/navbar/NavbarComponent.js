@@ -4,7 +4,6 @@ import { Button, NavbarBrand, Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navigate } from "react-router-dom";
 import Logo from "../../Logo/Nespresso-Logotype-Correct-2048x533-copy.png";
-import { Routes, Route } from "react-router-dom";
 
 export default function NavbarComponent() {
   const [error, setError] = useState("");
