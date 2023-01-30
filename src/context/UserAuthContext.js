@@ -11,7 +11,7 @@ import { auth } from "../firebase";
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   function signUp(email, password) {
@@ -44,7 +44,7 @@ export function UserAuthContextProvider({ children }) {
     <userAuthContext.Provider
       value={{ user, signUp, logIn, logOut, resetPassword }}
     >
-      {!loading && children}
+      {!loading ? children : null}
     </userAuthContext.Provider>
   );
 }

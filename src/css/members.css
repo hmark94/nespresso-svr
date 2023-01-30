@@ -1,55 +1,98 @@
 .form-header {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  max-width: 800px;
+  align-items: center;
   justify-content: space-between;
-}
-.form-title {
+  padding: 0 20px;
   margin-top: 60px;
-  margin-left: 70px;
-  margin-right: 70px;
 }
 
-.back-button {
-  margin-top: 60px;
-  margin-left: 70px;
-  margin-right: 70px;
-  padding: 10px;
+.form-title {
+  font-size: 36px;
+  font-weight: bold;
 }
-.new-button {
-  padding: 10px;
-}
+
+.new-button,
 .result-button {
-  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {background-color: #0069d9}
 }
 
 .form-body {
+  max-width: 800px;
+  margin: 40px auto;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border: 1px solid black;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .members-add {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    justify-content: center;
-}
-
-.members-add input {
-  margin: 10px 0;
-}
-
-.members-add button {
-  margin: 5px 0;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .searchbar {
-  display: flex;
-  margin: 10px 0;
+  width: 95%;
 }
-.members-email li {
-    list-style: none;
+
+.members-add input,
+.searchbar input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.members-add button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #0069d9;
+  }
+}
+
+.members-email {
+  width: 95%;
+}
+
+.members-email table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.members-email th,
+.members-email td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.members-email th {
+  background-color: #f2f2f2;
+}
+
+.members-email tr:hover {
+  background-color: #f2f2f2;
 }
