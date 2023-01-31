@@ -53,7 +53,7 @@ export default function NewForm() {
   const [isDisabled, setIsDisabled] = useState(false)
   const [isDisabled2, setIsDisabled2] = useState(true)
   const [isDisabled3, setIsDisabled3] = useState(true)
-  const { user, logOut } = useUserAuth()
+  const { user } = useUserAuth()
 
   let navigate = useNavigate()
 

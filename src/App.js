@@ -16,6 +16,7 @@ import { UserAuthContextProvider } from './context/UserAuthContext'
 import 'bootstrap/dist/css/bootstrap.css'
 import NavbarComponent from './components/navbar/NavbarComponent'
 
+
 function App() {
   return (
     <Container>
