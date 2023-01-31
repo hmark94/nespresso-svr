@@ -56,13 +56,15 @@ function NewFormDatabase() {
           <Form.Label className='fw-bold'>
             {question.question}
           </Form.Label>
-          <Form.Group controlId={question.id}>
+          <Form.Group controlId={`${question.id}`}>
             {question.options.map((option, index) => (
               <Form.Check
+              className='form-control-lg'
                 key={index}
                 type='checkbox'
                 label={option}
                 value={option}
+                id={`${question.id}_${index}`}
               />
             ))}
           </Form.Group>
