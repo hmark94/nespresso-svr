@@ -6,6 +6,15 @@ const QUESTION_DATABASE = {
     {
       id: 0,
       question:
+        'I. Kapcsolatteremtés',
+      type: 'paragraph',
+      options: null,
+      value: null,
+      isRequired: false,
+    },
+    {
+      id: 5,
+      question:
         'Barátságosan üdvözölte a vásárlót a Coffee Specialist? (Ice-breaking)',
       type: 'dropdown',
       options: ['Nem', 'Igen'],
@@ -27,6 +36,15 @@ const QUESTION_DATABASE = {
       type: 'text_input',
       visible: true,
       value: 0,
+      isRequired: false,
+    },
+    {
+      id: 25,
+      question:
+        'II. Igényfelmérés',
+      type: 'paragraph',
+      options: null,
+      value: null,
       isRequired: false,
     },
     {
@@ -74,6 +92,15 @@ const QUESTION_DATABASE = {
       options: ['Nem', 'Igen'],
       value: 5,
       isRequired: true,
+    },
+    {
+      id: 75,
+      question:
+        'III. Kapcsolat a márka és a vásárló között',
+      type: 'paragraph',
+      options: null,
+      value: null,
+      isRequired: false,
     },
     {
       id: 80,
@@ -129,6 +156,15 @@ const QUESTION_DATABASE = {
       isRequired: false,
     },
     {
+      id: 125,
+      question:
+        'IV. Lezárás és elköszönés',
+      type: 'paragraph',
+      options: null,
+      value: null,
+      isRequired: false,
+    },
+    {
       id: 130,
       question:
         'A Coffee Specialist felhívta a figyelmet az újrahasznosítási szolgáltatásra és felajánlotta az ingyenes gyűjtőtasakot?',
@@ -163,6 +199,15 @@ const QUESTION_DATABASE = {
       options: ['Nem', 'Igen'],
       value: 5,
       isRequired: true,
+    },
+    {
+      id: 165,
+      question:
+        'V. Coffee Specialist viselkedése, személyes vélemény',
+      type: 'paragraph',
+      options: null,
+      value: null,
+      isRequired: false,
     },
     {
       id: 170,

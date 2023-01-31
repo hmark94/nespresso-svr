@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import '../css/newformdatabase.css'
+import { Form, Dropdown } from 'react-bootstrap'
+import "bootstrap/dist/css/bootstrap.css";
 import QUESTION_DATABASE from '../context/QuestionDataBaseContext'
 
 function NewFormDatabase() {
@@ -8,49 +10,69 @@ function NewFormDatabase() {
   const renderQuestions = questionsData.map((question) => {
     if (question.type === 'dropdown') {
       return (
-        <div className='question_box' key={question.id}>
-          <div className='question_line'>{question.question}</div>
-          <div className={`answer_${question.type}`}>
-            <select id={question.id} required={question.isRequired}>
+        <div className='question_box mt-2 mb-3' key={question.id}>
+          <Form.Label className='fw-bold'>
+            {question.question}
+          </Form.Label>
+          <Form.Group controlId={question.id}>
+            <Form.Control
+              as='select'
+              required={question.isRequired}
+              className='form-control'
+            >
               {question.options.map((option, index) => (
                 <option key={index} value={option}>
                   {option}
                 </option>
               ))}
-            </select>
-          </div>
-          {question.info ? <div className='question_info'>{question.info}</div> : null}
+            </Form.Control>
+          </Form.Group>
+          {question.info ? (
+            <p className='fw-lighter fst-italic'>{question.info}</p>
+          ) : null}
         </div>
       )
     } else if (question.type === 'text_input') {
       return (
-        <div className='question_box' key={question.id}>
-          <div className='question_line'>{question.question}</div>
-          <div className={`answer_${question.type}`}>
-            <textarea
-              id={question.id}
+        <div className='question_box mt-2 mb-3' key={question.id}>
+          <Form.Label className='fw-bold'>
+            {question.question}
+          </Form.Label>
+          <Form.Group controlId={question.id}>
+            <Form.Control
+              as='textarea'
               rows='3'
-              cols='40'
               required={question.isRequired}
-              style={{ resize: 'none' }}
               disabled={!question.visible}
-            ></textarea>
-          </div>
+              style={{ resize: 'none' }}
+              className='form-control'
+            />
+          </Form.Group>
         </div>
       )
     } else if (question.type === 'checkbox') {
       return (
-        <div className='question_box' key={question.id}>
-          <div className='question_line'>{question.question}</div>
-          <div className={`answer_${question.type}`}>
+        <div className='question_box mt-2 mb-3' key={question.id}>
+          <Form.Label className='fw-bold'>
+            {question.question}
+          </Form.Label>
+          <Form.Group controlId={question.id}>
             {question.options.map((option, index) => (
-              <div key={index}>
-                <input type='checkbox' id={option} value={option} />
-                <label htmlFor={option}>{option}</label>
-              </div>
+              <Form.Check
+                key={index}
+                type='checkbox'
+                label={option}
+                value={option}
+              />
             ))}
-          </div>
+          </Form.Group>
         </div>
+      )
+    } else if (question.type === 'paragraph') {
+      return (
+        <h2 className='paragraph mb-5 mt-5' key={question.id}>
+          {question.question}
+        </h2>
       )
     }
   })

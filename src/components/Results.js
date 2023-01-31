@@ -1,6 +1,4 @@
 import {React, useEffect} from "react";
-import NavbarComponent from "./navbar/NavbarComponent";
-import { useNavigate } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import AlleeResultsComponents from "./results components/AlleeResultsComponents";
 import AndrassyResultsComponents from "./results components/AndrassyResultsComponents";
@@ -13,12 +11,9 @@ import Chart from "chart.js/auto";
 import SVR_APP_DATA from "../context/DataBaseContext";
 import { collection, getDoc, getDocs, doc } from "firebase/firestore";
 import { fdb } from "../firebase";
+import BackButton from "./shared/BackButton";
 
 export default function Results() {
-  let navigate = useNavigate();
-  function handleClick() {
-    navigate("/home");
-  }
 
   //console.log({SVR_APP_DATA})
   
@@ -65,19 +60,15 @@ export default function Results() {
 
   return (
     <>
-      <section className="form-header mb-3 mt-3">
-        <div className="back-button">
-          <Button variant="warning" onClick={handleClick}>
-            Vissza
-          </Button>
-        </div>
+      <section className="form-header d-flex align-items-center">
+        <BackButton />
 
-        <div className="results-title">
+        <div className="form-title mx-auto">
           <h2>Eredmények</h2>
         </div>
       </section>
 
-      <div className="results-top mb-4">
+      <div className="results-top mb-4 mt-4">
         Havi átlag:
         <br />
         Éves átlag:

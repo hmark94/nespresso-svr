@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import NavbarComponent from './navbar/NavbarComponent'
-import { useNavigate } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../css/members.css'
 import { db } from '../firebase'
 import { onValue, ref, remove, set, update } from 'firebase/database'
 import { uid } from 'uid'
+import BackButton from './shared/BackButton'
 
 export default function Members() {
   const [member, setMember] = useState('')
@@ -23,10 +22,6 @@ export default function Members() {
     setEmail(e.target.value)
   }
 
-  let navigate = useNavigate()
-  function handleClick() {
-    navigate('/home')
-  }
 
   //read
   useEffect(() => {
@@ -82,16 +77,13 @@ export default function Members() {
   return (
     <>
       <section className='form-header d-flex align-items-center'>
-        <div className='back-button'>
-          <Button variant='warning' onClick={handleClick}>
-            Vissza
-          </Button>
-        </div>
+        <BackButton />
 
         <div className='form-title mx-auto'>
           <h2>Coffee Specialists</h2>
         </div>
       </section>
+      
       <section className='form-body d-flex'>
         <div className='members-box d-flex flex-column align-items-center w-100'>
           <div className='searchbar mb-3 mt-3'>
