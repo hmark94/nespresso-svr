@@ -89,7 +89,7 @@ export default function Members() {
           <div className='searchbar mb-3 mt-3'>
             <Form.Control
               type='text'
-              placeholder='Coffee Specialist...'
+              placeholder='Coffee Specialist keresése'
               onChange={(e) => {
                 setSearchTerm(e.target.value)
               }}

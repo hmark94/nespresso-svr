@@ -1,5 +1,4 @@
 import React from "react";
-import NavbarComponent from "./navbar/NavbarComponent";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import CheckIcon from "../Icons/checked_list.png";
@@ -23,12 +22,12 @@ export default function Success() {
             Főoldal
           </Button>
         </div>
-        <div className="new-button">
+        <div className="new_button">
           <Button variant="success" onClick={handleClick2} className="btn-lg">
             Új SVR
           </Button>
         </div>
-        <div className="result-button">
+        <div className="result_button">
           <Button variant="info" onClick={handleClick3} className="btn-lg">
             Eredmény megtekintése
           </Button>

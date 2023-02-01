@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { onValue, ref } from 'firebase/database'
+import { onValue, ref } from "firebase/database";
 import { db } from "../firebase";
 
 const EmailInput = (props) => {
@@ -18,6 +18,7 @@ const EmailInput = (props) => {
     });
   }, []);
 
+
   return (
     <>
       <label htmlFor="cs_select" className="form-label">
@@ -29,7 +30,8 @@ const EmailInput = (props) => {
         id="cs_select"
         placeholder="Add meg a Coffee Specialist e-mail címét"
         value={newEmail}
-        onChange={(e) => setNewEmail(e.target.value)}
+        onChange={(e) => {setNewEmail(e.target.value);
+        props.onEmailUpdate(e.target.value)}}
         pattern=".+@nespresso\.com"
         required
       />
@@ -41,5 +43,6 @@ const EmailInput = (props) => {
     </>
   );
 };
+
 
 export default EmailInput;
