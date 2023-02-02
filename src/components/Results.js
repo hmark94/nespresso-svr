@@ -1,62 +1,68 @@
-import {React, useEffect} from "react";
+import { React, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
-import AlleeResultsComponents from "./results components/AlleeResultsComponents";
-import AndrassyResultsComponents from "./results components/AndrassyResultsComponents";
-import ArkadBudapestResultsComponents from "./results components/ArkadBudapestResultsComponents";
-import ArkadGyorResultsComponents from "./results components/ArkadGyorResultsComponents";
-import MammutResultsComponents from "./results components/MammutResultsComponents";
-import MomResultsComponents from "./results components/MomResultsComponents";
-import WestendResultsComponents from "./results components/WestendResultsComponents";
-import Chart from "chart.js/auto";
 import SVR_APP_DATA from "../context/DataBaseContext";
-import { collection, getDoc, getDocs, doc } from "firebase/firestore";
-import { fdb } from "../firebase";
 import BackButton from "./shared/BackButton";
+import { Line } from "react-chartjs-2";
+import '../css/resultsStyle.css'
 
 export default function Results() {
-
-  //console.log({SVR_APP_DATA})
-  
-  // const [blogs,setBlogs]=useState([])
-  const getBtqQuery = async () => {
-    // const agrBtqDataPromises = SVR_APP_DATA[0].items.map((btq) => {
-    //   return getDocs(collection(fdb, btq.boutique_id))
-      
-    // });
-    // const agrBtqData = await Promise.all(agrBtqDataPromises)
-    // agrBtqData.forEach(item => {
-    //   console.log(item)
-    // })
-      const response=fdb.collection('alleeBtq');
-      const data=await response.get();
-      data.docs.forEach(item=>{
-      //  setBlogs([...blogs,item.data()])
-      console.log(item)
-      })
-    
-  }
-
-  useEffect(() => {
-    getBtqQuery()
-  }, []);
- 
+  const data = {
+    labels: [
+      "Január",
+      "Február",
+      "Március",
+      "Április",
+      "Május",
+      "Június",
+      "Július",
+      "Augusztus",
+      "Szeptember",
+      "Október",
+      "November",
+      "December",
+    ],
+    datasets: [
+      {
+        label: "Eredmények",
+        fill: false,
+        lineTension: 0.01,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: "butt",
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: "miter",
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [65, 59, 80, 81, 56, 55, 40, 0, 10],
+      },
+    ],
+  };
 
   const readData = SVR_APP_DATA[0].items.map((e, i) => (
     <div className="mb-4" key={e.boutique_id}>
       <a href="#">
-        <Card>
+        <Card className="card h-100" style={{ width: "40rem" }}>
           <Card.Header
+            className="card-header text-center"
             style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
           >
             {e.boutique_name}
           </Card.Header>
-          <Card.Body>Eredmény</Card.Body>
+          <Card.Body className="card-body d-flex justify-content-center">
+            <Line data={data} />
+          </Card.Body>
         </Card>
       </a>
     </div>
   ));
-
-  //
 
   return (
     <>
@@ -74,108 +80,7 @@ export default function Results() {
         Éves átlag:
       </div>
 
-      <div className="results-body">
-        {readData}
-
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Allee Boutique
-              </Card.Header>
-              <Card.Body>
-                <AlleeResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Andrássy Boutique
-              </Card.Header>
-              <Card.Body>
-                <AndrassyResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Árkád Budapest Boutique
-              </Card.Header>
-              <Card.Body>
-                <ArkadBudapestResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Árkád Győr Boutique
-              </Card.Header>
-              <Card.Body>
-                <ArkadGyorResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Mammut Boutique
-              </Card.Header>
-              <Card.Body>
-                <MammutResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Mom Boutique
-              </Card.Header>
-              <Card.Body>
-                <MomResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-        <div className="mb-4">
-          <a href="#">
-            <Card>
-              <Card.Header
-                style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
-              >
-                Westend Boutique
-              </Card.Header>
-              <Card.Body>
-                <WestendResultsComponents />
-              </Card.Body>
-            </Card>
-          </a>
-        </div>
-      </div>
+      <div className="results-body">{readData}</div>
     </>
   );
 }
