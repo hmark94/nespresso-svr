@@ -33,10 +33,10 @@ export default function Login() {
   ) : (
     <>
       <div
-        className="modal-content rounded-4 shadow"
+        className="modal-content shadow border-0"
         style={{ marginTop: "30%" }}
       >
-        <div className="p-4 box">
+        <div className="p-4 box border-0 rounded">
           <img className="mb-3" src={Logo} height={80} width={430} />
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>

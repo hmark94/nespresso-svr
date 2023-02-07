@@ -25,11 +25,6 @@ const SVR_APP_DATA = [
         route: "arkgyBtq",
       },
       {
-        boutique_name: "Etele Boutique",
-        boutique_id: "eteBtq",
-        route: "eteBtq",
-      },
-      {
         boutique_name: "Mammut Boutique",
         boutique_id: "mammBtq",
         route: "mammBtq",

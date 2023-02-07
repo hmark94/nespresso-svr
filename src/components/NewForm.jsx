@@ -5,11 +5,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import { db, fdb } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useUserAuth } from "../context/UserAuthContext";
-import NewFormDatabase from "../components/NewFormDatabase";
+import NewFormDatabase from "./NewFormDatabase";
 import BackButton from "./shared/BackButton";
 import EmailInput from "./EmailInput";
 import BtqSelect from "./BtqSelect";
 import SubmitButton from "./shared/SubmitButton";
+import { sum, percentage } from './shared/Calculations';
 
 export default function NewForm() {
   const [newEmail, setNewEmail] = useState("");
