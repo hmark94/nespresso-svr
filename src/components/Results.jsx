@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import SVR_APP_DATA from "../context/DataBaseContext";
 import BackButton from "./shared/BackButton";
 import { Line } from "react-chartjs-2";
-import '../css/resultsStyle.css'
+import "../css/resultsStyle.css";
 
 export default function Results() {
   const data = {
@@ -45,6 +45,8 @@ export default function Results() {
       },
     ],
   };
+
+
 
   const readData = SVR_APP_DATA[0].items.map((e, i) => (
     <div className="mb-4" key={e.boutique_id}>

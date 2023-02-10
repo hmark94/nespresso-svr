@@ -73,6 +73,11 @@ export default function MasterResultsComponents() {
           return acc;
         }, {});
         //console.log({ results });
+        /**
+         * btqname{
+         *  
+         * }
+         */
       });
     };
 

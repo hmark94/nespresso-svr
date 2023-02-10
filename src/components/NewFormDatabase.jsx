@@ -7,10 +7,11 @@ import QUESTION_DATABASE from "../context/QuestionDataBaseContext";
 function NewFormDatabase({ onAnswerUpdate }) {
   const questionsData = QUESTION_DATABASE.questions;
   const [answers, setAnswers] = useState({});
+  const [totalPoints, setTotalPoints] = useState(0);
 
   useEffect(() => {
-    onAnswerUpdate(answers);
-  }, [answers]);
+    onAnswerUpdate({ answers, totalPoints });
+  }, [answers, totalPoints]);
 
   const renderQuestions = questionsData.map((question) => {
     const onAnswerUpdate = (e, questionId) => {
@@ -34,6 +35,7 @@ function NewFormDatabase({ onAnswerUpdate }) {
           [questionId]: e.target.value,
         });
       }
+
     };
 
     if (question.type === "dropdown") {

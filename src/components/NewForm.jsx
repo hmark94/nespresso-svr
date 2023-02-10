@@ -10,12 +10,13 @@ import BackButton from "./shared/BackButton";
 import EmailInput from "./EmailInput";
 import BtqSelect from "./BtqSelect";
 import SubmitButton from "./shared/SubmitButton";
-import { sum, percentage } from './shared/Calculations';
+import Spinner from "./shared/Spinner";
 
 export default function NewForm() {
   const [newEmail, setNewEmail] = useState("");
   const [newBtq, setNewBtq] = useState("");
   const [answers, setAnswers] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const { user } = useUserAuth();
 
   let navigate = useNavigate();
@@ -30,6 +31,8 @@ export default function NewForm() {
   const saveAnswers = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     await addDoc(surveyResponseRef, {
       email: newEmail,
       btq: newBtq,
@@ -40,15 +43,22 @@ export default function NewForm() {
       percentage: `${Math.trunc((sum / 174) * 100)}%`, */
     })
       .then(() => {
+        setIsLoading(false);
         navigate("/success");
       })
       .catch((err) => {
+        setIsLoading(false);
         alert(err.message);
       });
   };
 
+  useEffect(() => {
+    console.log(answers);
+  }, [answers]);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
       <section className="form-header mb-3 mt-6">
         <BackButton />
