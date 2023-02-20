@@ -19,16 +19,13 @@ const BtqSelect = (props) => {
       <option value="" disabled selected>
         Válaszd ki az üzletet!
       </option>
-      <option value="allee">Allee Boutique</option>
-      <option value="andrassy">Andrássy Boutique</option>
-      <option value="arkad">Árkád Budapest Boutique</option>
-      <option value="gyor">Árkád Győr Boutique</option>
-      <option value="etele" disabled>
-        Etele Pláza Boutique
-      </option>
-      <option value="mammut">Mammut Boutique</option>
-      <option value="mom">Mom Boutique</option>
-      <option value="westend">Westend Boutique</option>
+      <option value="alleBtq">Allee Boutique</option>
+      <option value="andrBtq">Andrássy Boutique</option>
+      <option value="arkbpBtq">Árkád Budapest Boutique</option>
+      <option value="arkgyBtq">Árkád Győr Boutique</option>
+      <option value="mammBtq">Mammut Boutique</option>
+      <option value="momBtq">Mom Boutique</option>
+      <option value="westBtq">Westend Boutique</option>
     </Form.Select>
   );
 };

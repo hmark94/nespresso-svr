@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import { db, fdb } from '../firebase'
+import { onValue, ref } from 'firebase/database'
 import { collection, addDoc } from 'firebase/firestore'
 import { useUserAuth } from '../context/UserAuthContext'
 import NewFormDatabase from './NewFormDatabase'
@@ -16,12 +17,36 @@ export default function NewForm() {
   const [newEmail, setNewEmail] = useState('')
   const [newBtq, setNewBtq] = useState('')
   const [answers, setAnswers] = useState({})
+  const [memberUid, setMemberUid] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const { user } = useUserAuth()
 
   let navigate = useNavigate()
   const date = new Date()
   const surveyResponseRef = collection(fdb, 'surveyResponse')
+
+  const findByEmail = (email) => {
+    return new Promise((resolve, reject) => {
+      onValue(
+        ref(db),
+        (snapshot) => {
+          const data = snapshot.val()
+          const uuid = Object.keys(data).find(
+            (key) => data[key].email === email
+          )
+          resolve(uuid)
+          setMemberUid(uuid)
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    })
+  }
+
+  useEffect(() => {
+    findByEmail(newEmail)
+  }, [newEmail])
 
   function checkAnswers(obj) {
     let totalPoints = 0
@@ -45,10 +70,6 @@ export default function NewForm() {
     return totalPoints
   }
 
-  useEffect(() => {
-    console.log(checkAnswers(answers.answers))
-  }, [answers])
-
   const saveAnswers = async (e) => {
     e.preventDefault()
     setIsLoading(true)
@@ -63,6 +84,7 @@ export default function NewForm() {
       date: date,
       total: sum,
       percentage: `${Math.trunc((sum / 104) * 100)}%`,
+      uuid: memberUid,
     })
       .then(() => {
         setIsLoading(false)

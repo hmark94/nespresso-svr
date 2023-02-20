@@ -109,7 +109,7 @@ const QUESTION_DATABASE = {
       type: 'dropdown',
       options: ['Nem', 'Igen'],
       value: 5,
-      info: 'A történetmesélés olyan anekdóták vagy történetek megosztására vonatkozik, melyek túlmennek a termék egyszerű leírásán.',
+      info: 'A történetmesélés olyan anekdoták vagy történetek megosztására vonatkozik, melyek túlmennek a termék egyszerű leírásán.',
       isRequired: true,
     },
     {

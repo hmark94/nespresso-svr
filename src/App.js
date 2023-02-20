@@ -10,12 +10,12 @@ import NewForm from './components/NewForm'
 import Results from './components/Results'
 import Members from './components/Members'
 import Success from './components/Success'
+import BtqPage from './components/BtqPage'
 import NewFormDatabase from './components/NewFormDatabase'
 import MemberResults from './components/member results components/memberResults.component'
 import { UserAuthContextProvider } from './context/UserAuthContext'
 import 'bootstrap/dist/css/bootstrap.css'
 import NavbarComponent from './components/navbar/NavbarComponent'
-
 
 function App() {
   return (
@@ -78,12 +78,22 @@ function App() {
           />
 
           <Route
-            path='/results/memberResults'
+            path='/results/:route'
             element={
-              <>
+              <ProtectedRoute>
+                <NavbarComponent />
+                <BtqPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/results/:route/:uuid'
+            element={
+              <ProtectedRoute>
                 <NavbarComponent />
                 <MemberResults />
-              </>
+              </ProtectedRoute>
             }
           />
 

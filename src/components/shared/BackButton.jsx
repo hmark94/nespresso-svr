@@ -3,13 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 function BackButton() {
-  let navigate = useNavigate()
-  function handleClick() {
-    navigate('/home')
-  }
+  const navigate = useNavigate()
+
   return (
     <div className='back-button'>
-      <Button variant='warning' onClick={handleClick}>
+      <Button variant='warning' onClick={() => navigate(-1)}>
         Vissza
       </Button>
     </div>
