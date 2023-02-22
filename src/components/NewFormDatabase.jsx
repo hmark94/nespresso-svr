@@ -50,6 +50,7 @@ function NewFormDatabase({ onAnswerUpdate }) {
               className='form-control'
               onChange={(e) => onAnswerUpdate(e, question.id)}
             >
+              <option value=''>Válassz a lehetőségek közül</option>
               {question.options.map((option, index) => (
                 <option key={index} value={option}>
                   {option}

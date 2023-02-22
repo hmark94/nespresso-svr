@@ -31,8 +31,6 @@ function BtqPage() {
     getResults().finally(() => setIsLoading(false));
   }, [route]);
 
-
-
   return isLoading ? (
     <Spinner />
   ) : (
@@ -48,23 +46,29 @@ function BtqPage() {
         <div></div>
       </section>
 
-      <div className="results-body d-flex flex-column-2">{results.map((result) => (
-          <Link key={result.id} to={`/results/${route}/${result.id}`}>
-            <Card className='card h-100 m-3' style={{ width: '25rem' }}>
-              <Card.Header
-                className='card-header text-center'
-                style={{ background: 'rgb(243 238 230)', fontWeight: '600' }}
-              >
-                {result.email}
-              </Card.Header>
-              <Card.Body className='card-body d-flex flex-column justify-content-center'>
-                <p className="mx-auto">104/{result.total}</p>
-                <p className="mx-auto">{result.percentage}</p>
-                <p className="mx-auto">{result.date.toDate().toString()}</p>
-              </Card.Body>
-            </Card>
-          </Link>
-        ))}</div>
+      {results.length > 0 ? (
+        <div className="results-body d-flex flex-column-2">
+          {results.map((result) => (
+            <Link key={result.id} to={`/results/${route}/${result.id}`}>
+              <Card className="card h-100 m-3" style={{ width: "25rem" }}>
+                <Card.Header
+                  className="card-header text-center"
+                  style={{ background: "rgb(243 238 230)", fontWeight: "600" }}
+                >
+                  {result.email}
+                </Card.Header>
+                <Card.Body className="card-body d-flex flex-column justify-content-center">
+                  <p className="mx-auto">104/{result.total}</p>
+                  <p className="mx-auto">{result.percentage}</p>
+                  <p className="mx-auto">{result.date.toDate().toString()}</p>
+                </Card.Body>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <h2>Nincsenek eredmények!</h2>
+      )}
     </>
   );
 }
