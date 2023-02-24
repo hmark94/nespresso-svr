@@ -1,56 +1,56 @@
-import BackButton from "./shared/BackButton";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import QUESTION_DATABASE from "../context/QuestionDataBaseContext";
-import { fdb } from "../firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import Spinner from "./shared/Spinner";
+import BackButton from './shared/BackButton'
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import QUESTION_DATABASE from '../context/QuestionDataBaseContext'
+import { fdb } from '../firebase'
+import { collection, doc, getDoc } from 'firebase/firestore'
+import Spinner from './shared/Spinner'
 
 function SurveyResultPage() {
-  const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState({});
-  const questionsData = QUESTION_DATABASE.questions;
+  const { id } = useParams()
+  const [isLoading, setIsLoading] = useState(false)
+  const [answers, setAnswers] = useState({})
 
-  const surveyResponseRef = collection(fdb, "surveyResponse");
+  const questionsData = QUESTION_DATABASE.questions
+  const docRef = doc(fdb, 'surveyResponse', `${id}`)
 
-  const getAnswers = async () => {
-    const q = query(surveyResponseRef, where("id", "==", `${id}`));
-
-    const querySnapshot = await getDocs(q);
-    const docs = [];
-    querySnapshot.forEach((doc) => {
-      docs.push({ id: doc.id, ...doc.data() });
-    });
-    setAnswers(docs);
-  };
+  const getAnswer = async () => {
+    const docSnapshot = await getDoc(docRef)
+    const response = []
+    if (docSnapshot.exists()) {
+      response.push({ id: docSnapshot.id, ...docSnapshot.data() })
+      setAnswers(response[0])
+    } else {
+      setAnswers(null)
+    }
+    setIsLoading(false)
+  }
 
   useEffect(() => {
-    setIsLoading(true);
-    setQuestions(questionsData);
-    getAnswers().finally(() => setIsLoading(false));
+    setIsLoading(true)
+    getAnswer().finally(() => setIsLoading(false))
+  }, [id])
 
-    console.log(questions)
-  }, [id]);
 
-  return (
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
-      <section className="form-header mb-3 mt-6">
+      <section className='form-header mb-3 mt-6'>
         <BackButton />
 
-        <div className="d-flex align-items-center justify-content-between">
-          <div className="m-4">
-            <h1>{id}</h1>
+        <div className='d-flex align-items-center justify-content-between'>
+          <div className='m-4'>
+            <h1>{}</h1>
           </div>
         </div>
       </section>
 
       <section>
-        
+
       </section>
     </>
-  );
+  )
 }
-
-export default SurveyResultPage;
+export default SurveyResultPage

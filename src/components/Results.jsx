@@ -72,7 +72,7 @@ export default function Results() {
         <BackButton />
 
         <div className='form-title mx-auto'>
-          <h2>Eredmények</h2>
+          <h1>Eredmények</h1>
         </div>
       </section>
 
