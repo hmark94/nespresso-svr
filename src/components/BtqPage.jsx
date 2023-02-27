@@ -48,7 +48,7 @@ function BtqPage() {
 
       {results.length > 0 ? (
         <div
-          className={`results-body row ${
+          className={`results-body mx-auto row ${
             results.length === 1 ? 'row-cols-1' : 'row-cols-md-2 row-cols-lg-2'
           }`}
         >
