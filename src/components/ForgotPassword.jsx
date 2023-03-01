@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <div className="modal-content rounded-4 shadow" style={{marginTop: "30%"}}>
+      <div className="modal-content rounded-4 border-0 shadow mx-auto forgotPassword-box">
         <div className="p-4 box">
           <h2 className="mb-3">Jelszó visszaállítása</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -37,6 +37,7 @@ const ForgotPassword = () => {
                 type="email"
                 placeholder="Email cím"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </Form.Group>
 

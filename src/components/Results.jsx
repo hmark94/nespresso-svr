@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { fdb } from '../firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import {
+  collection,
+  getDocs,
+  query,
+  Timestamp,
+  where,
+} from 'firebase/firestore'
 import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import SVR_APP_DATA from '../context/DataBaseContext'
@@ -12,47 +18,27 @@ import '../css/resultsStyle.css'
 export default function Results() {
   const [average, setAverage] = useState(0)
   const [avPercentage, setAvPercentage] = useState(0)
-  const resultsRef = collection(fdb, 'surveyResponse')
+  const [averageOfTheMonth, setAverageOfTheMonth] = useState(0)
+  const [btqChart, setBtqChart] = useState([])
+  const responseDocs = collection(fdb, 'surveyResponse')
 
-  const data = {
-    labels: [
-      'Január',
-      'Február',
-      'Március',
-      'Április',
-      'Május',
-      'Június',
-      'Július',
-      'Augusztus',
-      'Szeptember',
-      'Október',
-      'November',
-      'December',
-    ],
-    datasets: [
-      {
-        label: 'Eredmények',
-        fill: false,
-        lineTension: 0.01,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [65, 59, 80, 81, 56, 55, 40, 0, 10, 50],
-      },
-    ],
-  }
+  /*Date functions*/
+  // Create a new Date object for the current date
+  const currentDate = new Date()
+
+  // Get the year and month of the current date
+  const currentYear = currentDate.getFullYear()
+  const currentMonth = currentDate.getMonth()
+
+  // Create a new Date object for the start of the current month
+  const startOfMonth = new Date(currentYear, currentMonth, 1)
+
+  // Create a new Date object for the end of the current month
+  const endOfMonth = new Date(currentYear, currentMonth + 1, 0)
+
+  // Convert the start and end of month dates to Firestore Timestamps
+  const startOfMonthTimestamp = Timestamp.fromDate(startOfMonth)
+  const endOfMonthTimestamp = Timestamp.fromDate(endOfMonth)
 
   const calculateAverage = async () => {
     const totalQuerySnapshot = await getDocs(collection(fdb, 'surveyResponse'))
@@ -71,35 +57,133 @@ export default function Results() {
       0
     )
 
+    /*Calculate the average of the actual month*/
+
+    const q = query(
+      responseDocs,
+      where('date', '>=', startOfMonthTimestamp),
+      where('date', '<=', endOfMonthTimestamp)
+    )
+
+    const getResponseDocs = await getDocs(q)
+    const docs = []
+    let totalPoints = 0
+    getResponseDocs.forEach((doc) => {
+      const data = doc.data()
+      totalPoints += data.total
+      docs.push({ id: doc.id, ...data })
+    })
+
+    /*Calculating the averages functions*/
     const averageCount = total / totalQuerySnapshot.size
     const averagePercentage = percentageTotal / totalQuerySnapshot.size
+    const averagePoints = docs.length ? totalPoints / docs.length : 0
 
     setAverage(averageCount)
     setAvPercentage(averagePercentage.toFixed(1))
+    setAverageOfTheMonth(averagePoints)
+  }
 
+  const calculateMonthlyAverage = async (boutiqueId) => {
+    const monthlyAverages = []
+
+    for (let month = 1; month <= 12; month++) {
+      const strtMonth = new Date(currentYear, month - 1, 1)
+      const endMonth = new Date(currentYear, month, 0)
+
+      const strtMonthTimestamp = Timestamp.fromDate(strtMonth)
+      const endMonthTimestamp = Timestamp.fromDate(endMonth)
+
+      //query for the month
+      const q = query(
+        responseDocs,
+        where('btq', '==', boutiqueId),
+        where('date', '>=', strtMonthTimestamp),
+        where('date', '<=', endMonthTimestamp)
+      )
+
+      const qSnapshot = await getDocs(q)
+      const total = qSnapshot.docs.reduce((acc, doc) => {
+        return (
+          acc +
+          Number(
+            doc.data().percentage.substring(0, doc.data().percentage.length - 1)
+          )
+        )
+      }, 0)
+
+      const average = qSnapshot.size > 0 ? total / qSnapshot.size : null
+
+      // push the average to monthlyAverages array
+      monthlyAverages.push(average)
+    }
+    return monthlyAverages
   }
 
   useEffect(() => {
     calculateAverage()
   }, [])
 
-  const readData = SVR_APP_DATA[0].items.map((e, i) => (
-    <div className='mb-4 w-auto' key={e.boutique_id}>
-      <Link to={`/results/${e.route}`}>
-        <Card className='card h-100'>
-          <Card.Header
-            className='card-header text-center'
-            style={{ background: 'rgb(243 238 230)', fontWeight: '600' }}
-          >
-            {e.boutique_name}
-          </Card.Header>
-          <Card.Body className='card-body d-flex justify-content-center'>
-            <Line data={data} />
-          </Card.Body>
-        </Card>
-      </Link>
-    </div>
-  ))
+  const readData = SVR_APP_DATA[0].items.map((e) => {
+
+    const data = {
+      labels: [
+        'Január',
+        'Február',
+        'Március',
+        'Április',
+        'Május',
+        'Június',
+        'Július',
+        'Augusztus',
+        'Szeptember',
+        'Október',
+        'November',
+        'December',
+      ],
+      datasets: [
+        {
+          label: 'Eredmények',
+          fill: false,
+          lineTension: 0.01,
+          backgroundColor: 'rgba(75,192,192,0.4)',
+          borderColor: 'rgba(75,192,192,1)',
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: 'rgba(75,192,192,1)',
+          pointBackgroundColor: '#fff',
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+          pointHoverBorderColor: 'rgba(220,220,220,1)',
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: btqChart,
+        },
+      ],
+    }
+
+    return (
+      <div className='mb-4 w-auto' key={e.boutique_id}>
+        <Link to={`/results/${e.route}`}>
+          <Card className='card h-100'>
+            <Card.Header
+              className='card-header text-center'
+              style={{ background: 'rgb(243 238 230)', fontWeight: '600' }}
+            >
+              {e.boutique_name}
+            </Card.Header>
+            <Card.Body className='card-body d-flex justify-content-center'>
+              <Line data={data} />
+            </Card.Body>
+          </Card>
+        </Link>
+      </div>
+    )
+  })
 
   return (
     <>
@@ -112,10 +196,13 @@ export default function Results() {
       </section>
 
       <div className='results-top mb-4 mt-4'>
-        Havi átlag:
+        <h4>
+          Havi átlag: <strong>{averageOfTheMonth}</strong>
+        </h4>
         <br />
         <h4>
-          Éves átlag: <strong>{average}</strong> / <strong>{avPercentage}%</strong>
+          Éves átlag: <strong>{average}</strong> /{' '}
+          <strong>{avPercentage}%</strong>
         </h4>
       </div>
 

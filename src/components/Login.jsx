@@ -33,8 +33,7 @@ export default function Login() {
   ) : (
     <>
       <div
-        className="modal-content shadow border-0"
-        style={{ marginTop: "30%" }}
+        className="modal-content shadow border-0 login-box mx-auto"
       >
         <div className="p-4 box border-0 rounded">
           <img className="mb-3" src={Logo} height={80} width={430} />

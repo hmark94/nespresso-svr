@@ -82,6 +82,16 @@ body {
 }
 /*------------form_body-------------*/
 
+/*------------login-box-------------*/
+.login-box,
+.forgotPassword-box,
+.sigUp-box,
+.accountLogin-box {
+  max-width: 500px;
+  margin-top: 15rem;
+}
+/*------------login-box-------------*/
+
 /*------------members-------------*/
 .members-email {
   height: 360px;
@@ -126,6 +136,6 @@ body {
   color: black;
 }
 .results-body a:hover {
-  color: rgb(100, 100, 100)
+  color: rgb(100, 100, 100);
 }
 /*------------results-------------*/
