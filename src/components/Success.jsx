@@ -34,7 +34,7 @@ export default function Success() {
         </div>
       </section>
 
-      <div className="success-body">
+      <div className="success-body mx-auto">
         <div className="check-box">
           <img
             src={CheckIcon}

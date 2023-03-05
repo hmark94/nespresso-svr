@@ -86,7 +86,7 @@ body {
 .login-box,
 .forgotPassword-box,
 .sigUp-box,
-.accountLogin-box {
+.accountLogin-box, .success-body {
   max-width: 500px;
   margin-top: 15rem;
 }
