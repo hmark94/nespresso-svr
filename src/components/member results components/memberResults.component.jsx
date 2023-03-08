@@ -12,7 +12,8 @@ export default function MemberResults() {
   const [isLoading, setIsLoading] = useState(false);
   const [memberName, setMemberName] = useState("");
   const [results, setResults] = useState([]);
-  const [average, setAverage] = useState(null);
+  const [averageCount, setAverageCount] = useState(null);
+  const [percentageAvg, setPercentageAvg] = useState(null);
   const { route, uuid } = useParams();
 
   const dataRef = ref(db, uuid);
@@ -38,6 +39,19 @@ export default function MemberResults() {
     setResults(docs);
   };
 
+  useEffect(() => {
+    const sum = results.reduce((total, doc) => total + doc.total, 0);
+    const average = sum / results.length;
+    const percentage = results.reduce(
+      (percentage, doc) =>
+        percentage +
+        Number(doc.percentage.substring(0, doc.percentage.length - 1)),
+      0
+    );
+    const percAvg = percentage / results.length;
+    setPercentageAvg(percAvg);
+    setAverageCount(average);
+  }, [results]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,7 +60,6 @@ export default function MemberResults() {
 
   useEffect(() => {
     getName();
-    
   }, [memberName]);
 
   return isLoading ? (
@@ -66,11 +79,17 @@ export default function MemberResults() {
       <section>
         <div className="results-top mb-4 mt-4">
           <h4>
-            Havi átlag: <strong>{}</strong>
+            Éves átlag százalék:{" "}
+            <strong>
+              {results.length ? `${percentageAvg}%` : <span>Nincs eredmény</span>}
+            </strong>
           </h4>
           <br />
           <h4>
-            Éves átlag: <strong>{}</strong>
+            Éves átlag pont:{" "}
+            <strong>
+              {results.length ? averageCount : <span>Nincs eredmény</span>}
+            </strong>
           </h4>
         </div>
       </section>
