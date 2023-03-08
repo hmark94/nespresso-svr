@@ -23,7 +23,7 @@ const QUESTION_DATABASE = {
     },
     {
       id: 10,
-      question: 'Megkereste-e a Nespresso & You tagságot?',
+      question: 'Pontosan beazonosította a vásárlót, hogy megtalálja a N&U klubtagságot?',
       type: 'dropdown',
       options: ['Nem', 'Igen'],
       value: 5,

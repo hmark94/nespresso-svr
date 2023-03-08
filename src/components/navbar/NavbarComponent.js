@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useUserAuth } from '../../context/UserAuthContext'
 import { Button, NavbarBrand, Nav, Navbar } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import Logo from '../../Logo/Nespresso-Logotype-Correct-2048x533-copy.png'
 
 export default function NavbarComponent() {
@@ -39,7 +39,7 @@ export default function NavbarComponent() {
     <>
       <Navbar bg='headerBg' fixed='top' expand='lg'>
         <NavbarBrand>
-          <a className='navbar-brand' href='/home'>
+          <Link to='/home' className='navbar-brand'>
             <img
               src={Logo}
               width='160'
@@ -47,7 +47,7 @@ export default function NavbarComponent() {
               className='d-inline-block align-top'
               alt='Nespresso logo'
             />
-          </a>
+          </Link>
         </NavbarBrand>
 
         <Navbar.Toggle onClick={() => setIsOpen(!isOpen)} />
