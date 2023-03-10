@@ -1,0 +1,452 @@
+{
+  "0496d76981e": {
+    "email": "reka.kucsora@nespresso.com",
+    "member": "Kucsora Réka",
+    "uuid": "0496d76981e"
+  },
+  "06caccadf35": {
+    "email": "lili.puskar@nespresso.com",
+    "member": "Puskár Lili",
+    "uuid": "06caccadf35"
+  },
+  "0c5a40faa79": {
+    "email": "annaflora.szekely@nespresso.com",
+    "member": "Székely Anna Flóra",
+    "uuid": "0c5a40faa79"
+  },
+  "0cfb3c8f649": {
+    "email": "gergelyistvan.beleznay@nespresso.com",
+    "member": "Beleznay Gergely István",
+    "uuid": "0cfb3c8f649"
+  },
+  "0faa79e974d": {
+    "email": "alexandra.turi@nespresso.com",
+    "member": "Turi Alexandra",
+    "uuid": "0faa79e974d"
+  },
+  "180cfb3c8f6": {
+    "email": "botond.baratosi@nespresso.com",
+    "member": "Barátosi Botond",
+    "uuid": "180cfb3c8f6"
+  },
+  "1a0c5a40faa": {
+    "email": "istvandaniel.szabo@nespresso.com",
+    "member": "Szabó István Dániel",
+    "uuid": "1a0c5a40faa"
+  },
+  "1a9f06cacca": {
+    "email": "oliver.pasztor@nespresso.com",
+    "member": "Pásztor Olivér",
+    "uuid": "1a9f06cacca"
+  },
+  "1e36be31a9f": {
+    "email": "csengeszilvia.nemes@nespresso.com",
+    "member": "Nemes Csenge Szilvia",
+    "uuid": "1e36be31a9f"
+  },
+  "26e2d96dc3f": {
+    "email": "fruzsina.dvorcsak@nespresso.com",
+    "member": "Dvorcsák Fruzsina",
+    "uuid": "26e2d96dc3f"
+  },
+  "2d96dc3f44f": {
+    "email": "peter.fazekas@nespresso.com",
+    "member": "Fazekas Péter",
+    "uuid": "2d96dc3f44f"
+  },
+  "31a0c5a40fa": {
+    "email": "gergelyakos.szabo@nespresso.com",
+    "member": "Szabó Gergely Ákos",
+    "uuid": "31a0c5a40fa"
+  },
+  "31a9f06cacc": {
+    "email": "petralilla.panczel@nespresso.com",
+    "member": "Pánczél Petra Lilla",
+    "uuid": "31a9f06cacc"
+  },
+  "326e2d96dc3": {
+    "email": "daniella.dukkon@nespresso.com",
+    "member": "Dukkon Daniella",
+    "uuid": "326e2d96dc3"
+  },
+  "35931a0c5a4": {
+    "email": "adrienn.susko-belan@nespresso.com",
+    "member": "Suskó-Belán Adrienn",
+    "uuid": "35931a0c5a4"
+  },
+  "36be31a9f06": {
+    "email": "fanni.nemeth@nespresso.com",
+    "member": "Németh Fanni",
+    "uuid": "36be31a9f06"
+  },
+  "3c8f649b7a4": {
+    "email": "lillaadel.betlehem@nespresso.com",
+    "member": "Betlehem Lilla Adél",
+    "uuid": "3c8f649b7a4"
+  },
+  "3f44f5a6474": {
+    "email": "brigitta.gorzas@nespresso.com",
+    "member": "Gorzás Brigitta",
+    "uuid": "3f44f5a6474"
+  },
+  "40faa79e974": {
+    "email": "anita.toth@nespresso.com",
+    "member": "Tóth Anita",
+    "uuid": "40faa79e974"
+  },
+  "44f5a6474eb": {
+    "email": "balint.herczog@nespresso.com",
+    "member": "Herczog Bálint",
+    "uuid": "44f5a6474eb"
+  },
+  "474eb64d96b": {
+    "email": "mark.joszkin@nespresso.com",
+    "member": "Joszkin Márk",
+    "uuid": "474eb64d96b"
+  },
+  "496d76981e3": {
+    "email": "hajnaldorottya.laczkovich@nespresso.com",
+    "member": "Laczkovich Hajnal Dorottya",
+    "uuid": "496d76981e3"
+  },
+  "49b7a4e326e": {
+    "email": "imolakinga.csep@nespresso.com",
+    "member": "Csép Imola Kinga",
+    "uuid": "49b7a4e326e"
+  },
+  "4d96bed0496": {
+    "email": "roxana.kotul@nespresso.com",
+    "member": "Kotul Roxána",
+    "uuid": "4d96bed0496"
+  },
+  "4e326e2d96d": {
+    "email": "alexandra.dioszegi-csokasi@nespresso.com",
+    "member": "Diószegi-Csókási Alexandra",
+    "uuid": "4e326e2d96d"
+  },
+  "4eb64d96bed": {
+    "email": "nikoletta.kilijanovic@nespresso.com",
+    "member": "Kilijanovic Nikoletta",
+    "uuid": "4eb64d96bed"
+  },
+  "4f5a6474eb6": {
+    "email": "biborka.holecz@nespresso.com",
+    "member": "Holecz Bíborka",
+    "uuid": "4f5a6474eb6"
+  },
+  "5931a0c5a40": {
+    "email": "balazs.szabo@nespresso.com",
+    "member": "Szabó Balázs",
+    "uuid": "5931a0c5a40"
+  },
+  "5a40faa79e9": {
+    "email": "bonifactibor.talai@nespresso.com",
+    "member": "Tálai Bonifác Tibor",
+    "uuid": "5a40faa79e9"
+  },
+  "5a6474eb64d": {
+    "email": "gyongyver.ivanyi@nespresso.com",
+    "member": "Iványi Gyöngyvér",
+    "uuid": "5a6474eb64d"
+  },
+  "5e760f0bdeb": {
+    "email": "elek.teszt@nespresso.com",
+    "member": "Teszt Elek",
+    "uuid": "5e760f0bdeb"
+  },
+  "6180cfb3c8f": {
+    "email": "dorottya.akosi@nespresso.com",
+    "member": "Ákosi Dorottya",
+    "uuid": "6180cfb3c8f"
+  },
+  "6474eb64d96": {
+    "email": "ruben.ivanyi@nespresso.com",
+    "member": "Iványi Ruben",
+    "uuid": "6474eb64d96"
+  },
+  "649b7a4e326": {
+    "email": "petra.boros@nespresso.com",
+    "member": "Boros Petra",
+    "uuid": "649b7a4e326"
+  },
+  "64d96bed049": {
+    "email": "karolydaniel.korponai@nespresso.com",
+    "member": "Korponai Károly Dániel",
+    "uuid": "64d96bed049"
+  },
+  "6981e36be31": {
+    "email": "hunor.major@nespresso.com",
+    "member": "Major Hunor",
+    "uuid": "6981e36be31"
+  },
+  "6be31a9f06c": {
+    "email": "noemialetta.nemeth@nespresso.com",
+    "member": "Németh Noémi Aletta",
+    "uuid": "6be31a9f06c"
+  },
+  "6bed0496d76": {
+    "email": "editeniko.kovacs@nespresso.com",
+    "member": "Kovács Edit Enikő",
+    "uuid": "6bed0496d76"
+  },
+  "6caccadf359": {
+    "email": "botond.raski@nespresso.com",
+    "member": "Ráski Botond",
+    "uuid": "6caccadf359"
+  },
+  "6d76981e36b": {
+    "email": "livia.lorantfy@nespresso.com",
+    "member": "Lórántfy Lívia",
+    "uuid": "6d76981e36b"
+  },
+  "6dc3f44f5a6": {
+    "email": "nikolett.furst@nespresso.com",
+    "member": "Fürst Nikolett",
+    "uuid": "6dc3f44f5a6"
+  },
+  "6e2d96dc3f4": {
+    "email": "viktoria.ermelleki-giran@nespresso.com",
+    "member": "Érmelléki-Girán Viktória",
+    "uuid": "6e2d96dc3f4"
+  },
+  "74eb64d96be": {
+    "email": "peter.kandiko@nespresso.com",
+    "member": "Kandikó Péter",
+    "uuid": "74eb64d96be"
+  },
+  "76981e36be3": {
+    "email": "kitti.madarasz@nespresso.com",
+    "member": "Madarász Kitti",
+    "uuid": "76981e36be3"
+  },
+  "79e974db7fb": {
+    "email": "gabor.visnikar@nespresso.com",
+    "member": "Visnikar Gábor",
+    "uuid": "79e974db7fb"
+  },
+  "7a4e326e2d9": {
+    "email": "dalma.csizmadia@nespresso.com",
+    "member": "Csizmadia Dalma",
+    "uuid": "7a4e326e2d9"
+  },
+  "80cfb3c8f64": {
+    "email": "nikolettarita.bardosbalogh@nespresso.com",
+    "member": "Bárdos-Balogh Nikoletta Rita",
+    "uuid": "80cfb3c8f64"
+  },
+  "81e36be31a9": {
+    "email": "zitadorottya.nagy@nespresso.com",
+    "member": "Nagy Zita Dorottya",
+    "uuid": "81e36be31a9"
+  },
+  "8f649b7a4e3": {
+    "email": "botond.bodnar@nespresso.com",
+    "member": "Bodnár Botond",
+    "uuid": "8f649b7a4e3"
+  },
+  "931a0c5a40f": {
+    "email": "bernadett.szabo@nespresso.com",
+    "member": "Szabó Bernadett",
+    "uuid": "931a0c5a40f"
+  },
+  "96bed0496d7": {
+    "email": "dorina.kovacs@nespresso.com",
+    "member": "Kovács Dorina",
+    "uuid": "96bed0496d7"
+  },
+  "96d76981e36": {
+    "email": "katalin.lipotvari@nespresso.com",
+    "member": "Lipótvári Katalin",
+    "uuid": "96d76981e36"
+  },
+  "96dc3f44f5a": {
+    "email": "renata.fulopnenagy@nespresso.com",
+    "member": "Fülöpné Nagy Renáta",
+    "uuid": "96dc3f44f5a"
+  },
+  "981e36be31a": {
+    "email": "evaboglarka.nagy@nespresso.com",
+    "member": "Nagy Éva Boglárka",
+    "uuid": "981e36be31a"
+  },
+  "9b7a4e326e2": {
+    "email": "vivien.csicskar@nespresso.com",
+    "member": "Csicskár Vivien",
+    "uuid": "9b7a4e326e2"
+  },
+  "9e974db7fb1": {
+    "email": "gretaeva.zakal@nespresso.com",
+    "member": "Zakál Gréta Éva",
+    "uuid": "9e974db7fb1"
+  },
+  "9f06caccadf": {
+    "email": "bence.piri@nespresso.com",
+    "member": "Piri Bence",
+    "uuid": "9f06caccadf"
+  },
+  "a0c5a40faa7": {
+    "email": "dora.szecsi@nespresso.com",
+    "member": "Szécsi Dóra",
+    "uuid": "a0c5a40faa7"
+  },
+  "a40faa79e97": {
+    "email": "mate.tihanyi@nespresso.com",
+    "member": "Tihanyi Máté",
+    "uuid": "a40faa79e97"
+  },
+  "a4e326e2d96": {
+    "email": "hedvigildiko.csomory@nespresso.com",
+    "member": "Csömöry Hedvig Ildikó",
+    "uuid": "a4e326e2d96"
+  },
+  "a6474eb64d9": {
+    "email": "regina.ivanyi@nespresso.com",
+    "member": "Iványi Regina",
+    "uuid": "a6474eb64d9"
+  },
+  "a79e974db7f": {
+    "email": "patrik.varga@nespresso.com",
+    "member": "Varga Patrik",
+    "uuid": "a79e974db7f"
+  },
+  "a9f06caccad": {
+    "email": "monika.petko@nespresso.com",
+    "member": "Petkó Mónika",
+    "uuid": "a9f06caccad"
+  },
+  "aa79e974db7": {
+    "email": "lilla.varga@nespresso.com",
+    "member": "Varga Lilla",
+    "uuid": "aa79e974db7"
+  },
+  "accadf35931": {
+    "email": "zsuzsanna.scheibli-bakonyi@nespresso.com",
+    "member": "Scheibli-Bákonyi Zsuzsanna",
+    "uuid": "accadf35931"
+  },
+  "adf35931a0c": {
+    "email": "bianka.skoda@nespresso.com",
+    "member": "Skoda Bianka",
+    "uuid": "adf35931a0c"
+  },
+  "b3c8f649b7a": {
+    "email": "boglarka.besszmertnij@nespresso.com",
+    "member": "Besszmertnij Boglárka",
+    "uuid": "b3c8f649b7a"
+  },
+  "b64d96bed04": {
+    "email": "katinkakitti.komjathy@nespresso.com",
+    "member": "Komjáthy Katinka Kitti",
+    "uuid": "b64d96bed04"
+  },
+  "b7a4e326e2d": {
+    "email": "vivien.csipan@nespresso.com",
+    "member": "Csipán Vivien",
+    "uuid": "b7a4e326e2d"
+  },
+  "be31a9f06ca": {
+    "email": "lilianakata.nyari@nespresso.com",
+    "member": "Nyári Liliána Kata",
+    "uuid": "be31a9f06ca"
+  },
+  "bed0496d769": {
+    "email": "anna.kruzslicz@nespresso.com",
+    "member": "Kruzslicz Anna",
+    "uuid": "bed0496d769"
+  },
+  "c3f44f5a647": {
+    "email": "norbert.gombos@nespresso.com",
+    "member": "Gombos Norbert",
+    "uuid": "c3f44f5a647"
+  },
+  "c5a40faa79e": {
+    "email": "emese.szentey@nespresso.com",
+    "member": "Szentey Emese",
+    "uuid": "c5a40faa79e"
+  },
+  "c8f649b7a4e": {
+    "email": "gergonorbert.bocsak@nespresso.com",
+    "member": "Bocsák Gergő Norbert",
+    "uuid": "c8f649b7a4e"
+  },
+  "caccadf3593": {
+    "email": "szandraeszter.sandor-csonka@nespresso.com",
+    "member": "Sándor-Csonka Szandra Eszter",
+    "uuid": "caccadf3593"
+  },
+  "cadf35931a0": {
+    "email": "milan.sebok@nespresso.com",
+    "member": "Sebők Milán",
+    "uuid": "cadf35931a0"
+  },
+  "ccadf35931a": {
+    "email": "juditnoga.sebok@nespresso.com",
+    "member": "Sebők Judit Noga",
+    "uuid": "ccadf35931a"
+  },
+  "cfb3c8f649b": {
+    "email": "donat.berczes@nespresso.com",
+    "member": "Bérczes Donát",
+    "uuid": "cfb3c8f649b"
+  },
+  "d0496d76981": {
+    "email": "viktoriaevelin.kucses@nespresso.com",
+    "member": "Kucses Viktória Evelin",
+    "uuid": "d0496d76981"
+  },
+  "d76981e36be": {
+    "email": "laura.lorincz@nespresso.com",
+    "member": "Lőrincz Laura",
+    "uuid": "d76981e36be"
+  },
+  "d96bed0496d": {
+    "email": "anetteva.kovacs@nespresso.com",
+    "member": "Kovács Anett Éva",
+    "uuid": "d96bed0496d"
+  },
+  "d96dc3f44f5": {
+    "email": "renata.ferenczi-nemeth@nespresso.com",
+    "member": "Ferenczi-Németh Renáta",
+    "uuid": "d96dc3f44f5"
+  },
+  "dc3f44f5a64": {
+    "email": "stella.gal@nespresso.com",
+    "member": "Gál Stella",
+    "uuid": "dc3f44f5a64"
+  },
+  "df35931a0c5": {
+    "email": "laszlo.skutovics@nespresso.com",
+    "member": "Skutovics László",
+    "uuid": "df35931a0c5"
+  },
+  "e2d96dc3f44": {
+    "email": "daniel.fazekas@nespresso.com",
+    "member": "Fazekas Dániel",
+    "uuid": "e2d96dc3f44"
+  },
+  "e31a9f06cac": {
+    "email": "zsolt.olah@nespresso.com",
+    "member": "Oláh Zsolt",
+    "uuid": "e31a9f06cac"
+  },
+  "e326e2d96dc": {
+    "email": "doraanna.dobai@nespresso.com",
+    "member": "Dobai Dóra Anna",
+    "uuid": "e326e2d96dc"
+  },
+  "e36be31a9f0": {
+    "email": "eva.nemeth@nespresso.com",
+    "member": "Németh Éva",
+    "uuid": "e36be31a9f0"
+  },
+  "e974db7fb1e": {
+    "email": "izabella.zentai@nespresso.com",
+    "member": "Zentai Izabella",
+    "uuid": "e974db7fb1e"
+  },
+  "eb64d96bed0": {
+    "email": "lilla.kogler-vascsak@nespresso.com",
+    "member": "Kogler-Vascsák Lilla",
+    "uuid": "eb64d96bed0"
+  }
+}

@@ -72,15 +72,14 @@ export default function Members() {
   }
 
   //delete
-  const handleDelete = (email) => {
-    setEmailToDelete(email)
-    setShowDeleteModal(true)
+  const handleDelete = () => {
+    remove(ref(db, `/${tempUuid}`))
   }
 
-  const confirmDelete = (email) => {
-    remove(ref(db, `/${email.uuid}`))
-    setShowDeleteModal(false)
-    setEmailToDelete(null)
+  //delete modal
+  const handleModal = (email) => {
+    setShowDeleteModal(true)
+    setTempUuid(email.uuid)
   }
 
   return (
@@ -130,7 +129,7 @@ export default function Members() {
                       <td>{email.email}</td>
                       <td>
                         <Link
-                          className='btn btn-success'
+                          className='btn btn-success btn-sm'
                           to={`/results/route/${email.uuid}`}
                         >
                           Eredmények
@@ -147,7 +146,7 @@ export default function Members() {
                       <td>
                         <button
                           className='btn btn-danger btn-sm'
-                          onClick={() => handleDelete(email)}
+                          onClick={() => handleModal(email)}
                         >
                           Töröl
                         </button>
@@ -170,9 +169,10 @@ export default function Members() {
                             Mégse
                           </Button>
                           <Button
-                            variant='danger'
+                            variant='primary'
                             onClick={() => {
-                              confirmDelete(email)
+                              handleDelete(email)
+                              setShowDeleteModal(false)
                             }}
                           >
                             Törlés
